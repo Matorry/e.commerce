@@ -40,7 +40,7 @@ describe('Given the class RepoCommerceService', () => {
     it('Then should be call getSections', () => {
       const mockSections = [] as unknown as string[];
 
-      service.getSections().subscribe((products) => {
+      service.getCategories().subscribe((products) => {
         expect(products).toEqual(mockSections);
       });
 
@@ -52,7 +52,7 @@ describe('Given the class RepoCommerceService', () => {
     it('Then should be call getSection', () => {
       const mockProducts = [{}] as unknown as Product[];
 
-      service.getSection('jewelery').subscribe((products) => {
+      service.getCategory('jewelery').subscribe((products) => {
         expect(products).toEqual(mockProducts);
       });
 

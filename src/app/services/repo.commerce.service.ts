@@ -20,11 +20,11 @@ export class RepoCommerceService {
     return this.http.get(this.url + '/' + id, {}) as Observable<Product>;
   }
 
-  getSections(): Observable<string[]> {
+  getCategories(): Observable<string[]> {
     return this.http.get(this.url + '/categories', {}) as Observable<string[]>;
   }
 
-  getSection(section: string): Observable<Product[]> {
+  getCategory(section: string): Observable<Product[]> {
     return this.http.get(this.url + '/' + section, {}) as Observable<Product[]>;
   }
 }
