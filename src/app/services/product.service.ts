@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../model/product.model';
 import { RepoCommerceService } from './repo.commerce.service';
 import { StateService } from './state.service';
 
@@ -26,5 +27,26 @@ export class ProductService {
         console.log(response);
       },
     });
+  }
+
+  addToCart(product: Product) {
+    let currentCart = [] as Product[];
+    this.state.getCart().subscribe((data) => (currentCart = data));
+    currentCart.push(product);
+    this.state.setCart(currentCart);
+  }
+
+  removeFromCart(product: Product) {
+    let currentCart = [] as Product[];
+    this.state.getCart().subscribe((data) => (currentCart = data));
+    const index = currentCart.findIndex((item) => item.id === product.id);
+    if (index !== -1) {
+      currentCart.splice(index, 1);
+      this.state.setCart(currentCart);
+    }
+  }
+
+  clearCart() {
+    this.state.setCart([]);
   }
 }

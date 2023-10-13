@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/model/product.model';
+import { ProductService } from 'src/app/services/product.service';
 import { StateService } from 'src/app/services/state.service';
 
 @Component({
@@ -12,7 +13,11 @@ export class ProductDetailComponent implements OnInit {
   id: string | null = null;
   product: Product | undefined;
 
-  constructor(private state: StateService, private route: ActivatedRoute) {}
+  constructor(
+    private state: StateService,
+    private route: ActivatedRoute,
+    private service: ProductService
+  ) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -27,5 +32,9 @@ export class ProductDetailComponent implements OnInit {
     const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
     return '⭐'.repeat(fullStars) + halfStar + '☆'.repeat(emptyStars);
+  }
+
+  handleAddToCart(product: Product) {
+    this.service.addToCart(product);
   }
 }

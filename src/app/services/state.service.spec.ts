@@ -52,5 +52,16 @@ describe('Given the class StateService', () => {
         .getCategories()
         .subscribe((res) => expect(res).toEqual(categories));
     });
+
+    it('Then should return the cart', () => {
+      const cart = [] as unknown as Product[];
+      service.getCart().subscribe((res) => expect(res).toEqual(cart));
+    });
+
+    it('Then should set and return the cart', () => {
+      const cart = [] as unknown as Product[];
+      service.setCart(cart);
+      service.getCart().subscribe((res) => expect(res).toEqual(cart));
+    });
   });
 });

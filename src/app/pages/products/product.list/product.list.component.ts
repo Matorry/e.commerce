@@ -18,4 +18,8 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.service.getProductList();
   }
+
+  handleAddToCart(product: Product) {
+    this.service.addToCart(product);
+  }
 }

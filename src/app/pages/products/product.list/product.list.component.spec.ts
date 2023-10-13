@@ -46,5 +46,17 @@ describe('Given the class ProductListComponent', () => {
       expect(repo.getAll).toHaveBeenCalled();
       expect(component.products).toEqual(mockProducts);
     });
+
+    it('Then should call stateService.setCart when handleAddToCart is called', () => {
+      spyOn(stateService, 'setCart');
+      const mockProduct = {
+        id: 1,
+        name: 'Product 1',
+        rating: { rate: 1 },
+      } as unknown as Product;
+      component.handleAddToCart(mockProduct);
+
+      expect(stateService.setCart).toHaveBeenCalledWith([mockProduct]);
+    });
   });
 });

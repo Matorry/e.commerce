@@ -1,11 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { EventEmitter } from '@angular/core';
+import { Product } from 'src/app/model/product.model';
 import { ProductCardComponent } from './product.card.component';
 
 describe('Given the class ProductCardComponent', () => {
   let component: ProductCardComponent;
   let fixture: ComponentFixture<ProductCardComponent>;
-
   describe('When I instantiate it', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -26,6 +27,18 @@ describe('Given the class ProductCardComponent', () => {
       expect(component.getStarRating(2.25)).toBe('⭐⭐☆☆☆');
       expect(component.getStarRating(1.8)).toBe('⭐⭐☆☆☆');
       expect(component.getStarRating(0.5)).toBe('⭐☆☆☆☆');
+    });
+
+    it("Then should call 'next' method on EventEmitter when addToCart is triggered", () => {
+      spyOn(EventEmitter.prototype, 'next');
+      const mockProduct = {
+        id: 1,
+        name: 'Product 1',
+        rating: { rate: 1 },
+      } as unknown as Product;
+      component.addToCart(mockProduct);
+
+      expect(EventEmitter.prototype.next).toHaveBeenCalledWith(mockProduct);
     });
   });
 });

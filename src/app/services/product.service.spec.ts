@@ -82,5 +82,25 @@ describe('Given the class ProductService', () => {
       expect(repoCommerceService.getAll).toHaveBeenCalledWith();
       expect(stateService.setProducts).not.toHaveBeenCalled();
     });
+
+    it('Then should add a product to the cart', () => {
+      const product = { id: '2' } as unknown as Product;
+      service.addToCart(product);
+      stateService.getCart().subscribe((res) => expect(res).toEqual([product]));
+    });
+
+    it('Then should remove a product from the cart', () => {
+      const product = { id: '2' } as unknown as Product;
+      service.addToCart(product);
+      service.removeFromCart(product);
+      stateService.getCart().subscribe((res) => expect(res).toEqual([]));
+    });
+
+    it('Then should clear the cart', () => {
+      const product = { id: '2' } as unknown as Product;
+      service.addToCart(product);
+      service.clearCart();
+      stateService.getCart().subscribe((res) => expect(res).toEqual([]));
+    });
   });
 });
