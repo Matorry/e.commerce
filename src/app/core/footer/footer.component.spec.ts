@@ -5,7 +5,8 @@ import { FooterComponent } from './footer.component';
 describe('Given the component FooterComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
-  describe('When i instance it ', () => {
+
+  describe('When I instantiate it', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [FooterComponent],
@@ -15,7 +16,7 @@ describe('Given the component FooterComponent', () => {
       fixture.detectChanges();
     });
 
-    it('Then, the component should be created', () => {
+    it('Then the component should be created', () => {
       expect(component).toBeTruthy();
     });
   });

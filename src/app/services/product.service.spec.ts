@@ -10,7 +10,8 @@ describe('Given the class ProductService', () => {
   let service: ProductService;
   let repoCommerceService: RepoCommerceService;
   let stateService: StateService;
-  describe('When i instance his methods', () => {
+
+  describe('When I access its methods', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         providers: [
@@ -30,11 +31,11 @@ describe('Given the class ProductService', () => {
       stateService = TestBed.inject(StateService);
     });
 
-    it('Then, should be created', () => {
+    it('Then should be created', () => {
       expect(service).toBeTruthy();
     });
 
-    it('Then, should call setCategories', () => {
+    it('Then should call setCategories', () => {
       spyOn(repoCommerceService, 'getCategories').and.returnValue(of(['test']));
       spyOn(stateService, 'setCategories');
 
@@ -44,7 +45,7 @@ describe('Given the class ProductService', () => {
       expect(stateService.setCategories).toHaveBeenCalledWith(['test']);
     });
 
-    it('Then, should call setCategories and repo return error', () => {
+    it('Then should call setCategories and repo returns an error', () => {
       spyOn(repoCommerceService, 'getCategories').and.returnValue(
         throwError('Simulated error')
       );
@@ -56,7 +57,7 @@ describe('Given the class ProductService', () => {
       expect(stateService.setCategories).not.toHaveBeenCalled();
     });
 
-    it('Then, should call getProductList', () => {
+    it('Then should call getProductList', () => {
       spyOn(repoCommerceService, 'getAll').and.returnValue(
         of([{ id: 1 } as Product])
       );
@@ -70,7 +71,7 @@ describe('Given the class ProductService', () => {
       ]);
     });
 
-    it('Then, should call getProductList and repo return error', () => {
+    it('Then should call getProductList and repo returns an error', () => {
       spyOn(repoCommerceService, 'getAll').and.returnValue(
         throwError('Simulated error')
       );

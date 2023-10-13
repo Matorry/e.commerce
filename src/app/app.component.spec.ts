@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 
 describe('Given the component AppComponent', () => {
-  describe('When i instance it ', () => {
+  describe('When I instantiate it', () => {
     beforeEach(() =>
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, CoreModule],
@@ -12,13 +12,13 @@ describe('Given the component AppComponent', () => {
       })
     );
 
-    it('Then, the component should be created.', () => {
+    it('Then the component should be created', () => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.componentInstance;
       expect(app).toBeTruthy();
     });
 
-    it(`Then, should have as title 'e-commerce'`, () => {
+    it('Then should have the title set to "e-commerce"', () => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.componentInstance;
       expect(app.title).toEqual('e-commerce');

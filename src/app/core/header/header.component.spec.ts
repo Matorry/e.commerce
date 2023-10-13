@@ -5,7 +5,8 @@ import { HeaderComponent } from './header.component';
 describe('Given the component HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  describe('When i instance it ', () => {
+
+  describe('When I instantiate it', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [HeaderComponent],
@@ -15,7 +16,7 @@ describe('Given the component HeaderComponent', () => {
       fixture.detectChanges();
     });
 
-    it('Then, the component should be created.', () => {
+    it('Then the component should be created', () => {
       expect(component).toBeTruthy();
     });
   });

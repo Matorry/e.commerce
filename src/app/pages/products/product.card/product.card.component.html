@@ -1,1 +1,13 @@
-<p>product.card works!</p>
+<ul>
+  <li *ngFor="let item of products">
+    <a [routerLink]="['/product', item.id]">
+      <img src="{{item.image}}" alt="{{item.title}}">
+      <span>{{item.title}}</span>
+    </a>
+    <span>{{ getStarRating(item.rating.rate) }} {{item.rating.count}} votes</span>
+    <div>
+      <span>{{item.price}}€</span>
+      <span>🛒</span>
+    </div>
+  </li>
+</ul>
