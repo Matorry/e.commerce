@@ -13,15 +13,6 @@ export class RepoUserService {
     this.url = 'http://localhost:4300/users';
   }
 
-  getAll(): Observable<User[]> {
-    return this.http.get(this.url) as Observable<User[]>;
-  }
-
-  get(data: string): Observable<User> {
-    const url = this.url + '/' + data;
-    return this.http.get(url) as Observable<User>;
-  }
-
   register(data: UserNoId): Observable<User> {
     const url = this.url + '/register';
     return this.http.post(url, data).pipe(

@@ -22,27 +22,6 @@ describe('Given the class RepoUserService', () => {
     httpMock = TestBed.inject(HttpTestingController);
   });
   describe('When i instance his methods', () => {
-    it('Then should be call getAll', () => {
-      const mockUsers = [] as unknown as User[];
-
-      service.getAll().subscribe((users) => {
-        expect(users.length).toBe(2);
-        expect(users).toEqual(mockUsers);
-      });
-
-      const req = httpMock.expectOne(service.url);
-      expect(req.request.method).toBe('GET');
-    });
-    it('Then should be call get', () => {
-      const mockUsers = {} as unknown as User;
-
-      service.get('').subscribe((user) => {
-        expect(user).toEqual(mockUsers);
-      });
-
-      const req = httpMock.expectOne(service.url + '/');
-      expect(req.request.method).toBe('GET');
-    });
     it('Then should be call register', () => {
       const mockResp: User = {} as User;
 
@@ -77,8 +56,9 @@ describe('Given the class RepoUserService', () => {
 
       const req = httpMock.expectOne(service.url + '/login');
 
-      req.error(errorEvent);
+      req.flush(errorEvent, { status: 400, statusText: 'Bad Request' }); // Simulate an HTTP error response
     });
+
     it('Then should be call register and return error', () => {
       const errorEvent = new ErrorEvent('Network error', {
         message: 'undefined , user alredy exist',
@@ -91,7 +71,7 @@ describe('Given the class RepoUserService', () => {
 
       const req = httpMock.expectOne(service.url + '/register');
 
-      req.error(errorEvent);
+      req.flush(errorEvent, { status: 400, statusText: 'Bad Request' }); // Simulate an HTTP error response
     });
   });
 });
