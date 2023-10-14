@@ -56,7 +56,7 @@ describe('Given the class RepoUserService', () => {
 
       const req = httpMock.expectOne(service.url + '/login');
 
-      req.flush(errorEvent, { status: 400, statusText: 'Bad Request' }); // Simulate an HTTP error response
+      req.flush(errorEvent, { status: 400, statusText: 'Bad Request' });
     });
 
     it('Then should be call register and return error', () => {
@@ -71,7 +71,7 @@ describe('Given the class RepoUserService', () => {
 
       const req = httpMock.expectOne(service.url + '/register');
 
-      req.flush(errorEvent, { status: 400, statusText: 'Bad Request' }); // Simulate an HTTP error response
+      req.flush(errorEvent, { status: 400, statusText: 'Bad Request' });
     });
   });
 });
