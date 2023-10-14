@@ -1,0 +1,15 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div>
+  <div *ngIf="product" class="details">
+    <img src="{{product.image}}" alt="{{product.title}}">
+    <span>{{product.title}}</span>
+    <p>{{product.description}}</p>
+    <span>{{ getStarRating(product.rating.rate) }} {{product.rating.count}} votes</span>
+    <div class="price-container">
+      <span>{{product.price}}€</span>
+      <span (click)="handleAddToCart(product)">🛒</span>
+    </div>
+  </div>
+  <a [routerLink]="['/products']">Back</a>
+</div>

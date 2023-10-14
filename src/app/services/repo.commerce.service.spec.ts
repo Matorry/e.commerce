@@ -9,7 +9,8 @@ import { RepoCommerceService } from './repo.commerce.service';
 describe('Given the class RepoCommerceService', () => {
   let service: RepoCommerceService;
   let httpMock: HttpTestingController;
-  describe('When i instance his methods', () => {
+
+  describe('When I access its methods', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [HttpClientTestingModule],
@@ -17,7 +18,8 @@ describe('Given the class RepoCommerceService', () => {
       service = TestBed.inject(RepoCommerceService);
       httpMock = TestBed.inject(HttpTestingController);
     });
-    it('Then should be call getAll', () => {
+
+    it('Then should call getAll', () => {
       const mockProducts = [{}] as unknown as Product[];
 
       service.getAll().subscribe((products) => {
@@ -27,7 +29,8 @@ describe('Given the class RepoCommerceService', () => {
       const req = httpMock.expectOne('https://fakestoreapi.com/products');
       expect(req.request.method).toBe('GET');
     });
-    it('Then should be call getById', () => {
+
+    it('Then should call getById', () => {
       const mockProduct = {} as unknown as Product;
 
       service.getById('1').subscribe((product) => {
@@ -37,27 +40,27 @@ describe('Given the class RepoCommerceService', () => {
       const req = httpMock.expectOne('https://fakestoreapi.com/products/1');
       expect(req.request.method).toBe('GET');
     });
-    it('Then should be call getSections', () => {
+
+    it('Then should call getCategories', () => {
       const mockSections = [] as unknown as string[];
 
-      service.getSections().subscribe((products) => {
-        expect(products).toEqual(mockSections);
+      service.getCategories().subscribe((sections) => {
+        expect(sections).toEqual(mockSections);
       });
 
-      const req = httpMock.expectOne(
-        'https://fakestoreapi.com/products/categories'
-      );
+      const req = httpMock.expectOne('https://fakestoreapi.com/categories');
       expect(req.request.method).toBe('GET');
     });
-    it('Then should be call getSection', () => {
+
+    it('Then should call getCategory', () => {
       const mockProducts = [{}] as unknown as Product[];
 
-      service.getSection('jewelery').subscribe((products) => {
+      service.getCategory('jewelry').subscribe((products) => {
         expect(products).toEqual(mockProducts);
       });
 
       const req = httpMock.expectOne(
-        'https://fakestoreapi.com/products/jewelery'
+        'https://fakestoreapi.com/categories/jewelry'
       );
       expect(req.request.method).toBe('GET');
     });
