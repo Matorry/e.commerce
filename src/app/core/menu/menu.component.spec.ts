@@ -1,21 +1,24 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MenuComponent } from './menu.component';
 
-describe('MenuComponent', () => {
+describe('Given the class MenuComponent', () => {
   let component: MenuComponent;
   let fixture: ComponentFixture<MenuComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [MenuComponent]
+  describe('When i instance it', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        imports: [HttpClientTestingModule],
+        declarations: [MenuComponent],
+      });
+      fixture = TestBed.createComponent(MenuComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
     });
-    fixture = TestBed.createComponent(MenuComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    it('Then, should create', () => {
+      expect(component).toBeTruthy();
+    });
   });
 });

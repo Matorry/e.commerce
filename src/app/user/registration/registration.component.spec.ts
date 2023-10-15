@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import { User } from 'src/app/model/user.model';
@@ -28,6 +32,10 @@ describe('Given the class RegistrationComponent', () => {
           RouterTestingModule.withRoutes([
             { path: 'login', component: LoginComponent },
           ]),
+          MatButtonModule,
+          MatFormFieldModule,
+          MatInputModule,
+          BrowserAnimationsModule,
         ],
       });
       fixture = TestBed.createComponent(RegistrationComponent);
@@ -46,14 +54,10 @@ describe('Given the class RegistrationComponent', () => {
         firstName: 'test',
         lastName: 'test',
         email: 'test',
-        age: 'test',
         password: 'test',
-        phone: 'test',
         addressStreet: 'test',
         postalCode: 'test',
         city: 'test',
-        title: 'test',
-        isAcceptingCommunications: true,
       });
       component.registerForm.updateValueAndValidity();
       const spyRepo = spyOn(repo, 'register').and.returnValue(
@@ -75,14 +79,10 @@ describe('Given the class RegistrationComponent', () => {
         firstName: 'test',
         lastName: 'test',
         email: 'test',
-        age: 'test',
         password: 'test',
-        phone: 'test',
         addressStreet: 'test',
         postalCode: 'test',
         city: 'test',
-        title: 'test',
-        isAcceptingCommunications: true,
       });
       component.registerForm.updateValueAndValidity();
       const error = () => new Error('Error de inicio de sesión');

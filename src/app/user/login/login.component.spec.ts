@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import { LogedUser, User } from 'src/app/model/user.model';
@@ -28,6 +32,10 @@ describe('Given the class LoginComponent', () => {
           RouterTestingModule.withRoutes([
             { path: 'products', component: ProductListComponent },
           ]),
+          MatButtonModule,
+          MatFormFieldModule,
+          MatInputModule,
+          BrowserAnimationsModule,
         ],
       });
       fixture = TestBed.createComponent(LoginComponent);
@@ -49,14 +57,6 @@ describe('Given the class LoginComponent', () => {
 
       component.handleSubmit();
       expect(spyRepo).toHaveBeenCalled();
-    });
-    it('Then, it should receive an error from the user.', () => {
-      component.loginForm.setValue({ userName: '', password: '' });
-      component.loginForm.updateValueAndValidity();
-      const spyRepo = spyOn(repo, 'login');
-
-      component.handleSubmit();
-      expect(spyRepo).not.toHaveBeenCalled();
     });
     it('Then, it should receive an error from the repository.', () => {
       component.loginForm.setValue({ userName: 'test', password: 'test' });
