@@ -6,7 +6,10 @@
       <img src="{{item.image}}" alt="{{item.title}}">
       <span>{{item.title}}</span>
     </a>
-    <span>{{ getStarRating(item.rating.rate) }} {{item.rating.count}} votes</span>
+    <div class="container">
+      <span>{{ getStarRating(item.rating.rate) }} </span>
+      <span class="votes">{{item.rating.count}} votes</span>
+    </div>
     <div>
       <span>{{item.price}}€</span>
       <span (click)="addToCart(item)">🛒</span>
