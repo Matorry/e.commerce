@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../model/product.model';
+import { LogedUser } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +10,21 @@ export class StateService {
   private productList$: BehaviorSubject<Product[]>;
   private categories$: BehaviorSubject<string[]>;
   private cart$: BehaviorSubject<Product[]>;
+  private user$: BehaviorSubject<LogedUser>;
 
   constructor() {
     this.productList$ = new BehaviorSubject([] as Product[]);
     this.categories$ = new BehaviorSubject([] as string[]);
     this.cart$ = new BehaviorSubject([] as Product[]);
+    this.user$ = new BehaviorSubject({} as LogedUser);
+  }
+
+  getUser() {
+    return this.user$.asObservable();
+  }
+
+  setUser(products: LogedUser) {
+    this.user$.next(products);
   }
 
   getProducts() {

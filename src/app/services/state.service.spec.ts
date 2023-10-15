@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Product } from '../model/product.model';
+import { LogedUser } from '../model/user.model';
 import { StateService } from './state.service';
 
 describe('Given the class StateService', () => {
@@ -62,6 +63,17 @@ describe('Given the class StateService', () => {
       const cart = [] as unknown as Product[];
       service.setCart(cart);
       service.getCart().subscribe((res) => expect(res).toEqual(cart));
+    });
+
+    it('Then should return the user', () => {
+      const user = {} as unknown as LogedUser;
+      service.getUser().subscribe((res) => expect(res).toEqual(user));
+    });
+
+    it('Then should set and return the user', () => {
+      const user = {} as unknown as LogedUser;
+      service.setUser(user);
+      service.getUser().subscribe((res) => expect(res).toEqual(user));
     });
   });
 });
