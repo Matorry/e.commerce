@@ -8,9 +8,7 @@ import { MenuOption } from 'src/app/types/menu.options';
 })
 export class MenuComponent {
   @Input() menuOptions: MenuOption[] | null;
-  token: string;
   constructor() {
     this.menuOptions = null;
-    this.token = '';
   }
 }

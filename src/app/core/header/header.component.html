@@ -1,4 +1,5 @@
 <header>
   <h1>E-Commerce</h1>
-  <e-commerce-menu [menuOptions]="menuOptions"></e-commerce-menu>
+  <e-commerce-menu [menuOptions]="menuOptions" *ngIf="!isUserLoggedIn"></e-commerce-menu>
+  <e-commerce-menu [menuOptions]="menuOptionsLoged" *ngIf="isUserLoggedIn"></e-commerce-menu>
 </header>

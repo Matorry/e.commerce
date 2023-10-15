@@ -85,7 +85,7 @@ describe('Given the class RegistrationComponent', () => {
         city: 'test',
       });
       component.registerForm.updateValueAndValidity();
-      const error = () => new Error('Error de inicio de sesión');
+      const error = () => new Error('Error de inicio de registro');
       const spyRepo = spyOn(repo, 'register').and.returnValue(
         throwError(error)
       );
@@ -95,7 +95,7 @@ describe('Given the class RegistrationComponent', () => {
       expect(
         component.registerForm.controls['password'].hasError('incorrect')
       ).toBeFalse();
-      expect(component.errorMessage).toBe('Error de inicio de sesión');
+      expect(component.errorMessage).toBe('Error de inicio de registro');
     });
   });
 });

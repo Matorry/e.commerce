@@ -61,7 +61,7 @@ describe('Given the class LoginComponent', () => {
     it('Then, it should receive an error from the repository.', () => {
       component.loginForm.setValue({ userName: 'test', password: 'test' });
       component.loginForm.updateValueAndValidity();
-      const error = { message: 'Error de inicio de sesión' };
+      const error = () => new Error('Error de inicio de sesión');
       const spyRepo = spyOn(repo, 'login').and.returnValue(throwError(error));
 
       component.handleSubmit();
@@ -69,7 +69,7 @@ describe('Given the class LoginComponent', () => {
       expect(
         component.loginForm.controls['password'].hasError('incorrect')
       ).toBeFalse();
-      expect(component.errorMessage).toBe(error.message);
+      expect(component.errorMessage).toBe('Error de inicio de sesión');
     });
   });
 });

@@ -9,11 +9,24 @@ import { MenuOption } from 'src/app/types/menu.options';
 })
 export class HeaderComponent {
   menuOptions: MenuOption[];
+  menuOptionsLoged: MenuOption[];
+  isUserLoggedIn: boolean;
   constructor(private state: StateService) {
+    this.isUserLoggedIn = false;
+
     this.menuOptions = [
       { path: '/products', label: 'Shop' },
       { path: '/cart', label: 'Cart' },
       { path: '/user/login', label: 'Login' },
     ];
+    this.menuOptionsLoged = [
+      { path: '/products', label: 'Shop' },
+      { path: '/cart', label: 'Cart' },
+      { path: '/user', label: 'User' },
+    ];
+
+    this.state.getUser().subscribe((user) => {
+      if (user.token) this.isUserLoggedIn = true;
+    });
   }
 }
