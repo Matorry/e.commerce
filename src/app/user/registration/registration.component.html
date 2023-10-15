@@ -1,0 +1,24 @@
+<form [formGroup]="registerForm" aria-label="userRegister" (submit)="handleRegister()">
+  <h2 for="userRegister">Register</h2>
+  <input type="text" name="firstName" formControlName="firstName" placeholder="First name">
+  <input type="text" name="lastName" formControlName="lastName" placeholder="Last name">
+  <input type="text" name="userName" formControlName="userName" placeholder="User name">
+  <input type="number" name="age" formControlName="age" placeholder="Age">
+  <input type="email" name="email" formControlName="email" placeholder="Email">
+  <input type="password" name="password" formControlName="password" placeholder="Password">
+  <input type="number" name="phone" formControlName="phone" placeholder="Phone number">
+  <input type="text" name="addressStreet" formControlName="addressStreet" placeholder="Address street">
+  <input type="text" name="postalCode" formControlName="postalCode" placeholder="Postal code">
+  <input type="text" name="city" formControlName="city" placeholder="City">
+  <div>
+    <label for="title">Title:</label>
+    <input type="radio" name="title" [value]="'Mr'" formControlName="title" class="check"> Mr
+    <input type="radio" name="title" [value]="'Ms'" formControlName="title" class="check"> Ms
+  </div>
+  <div>
+    <label for="isAcceptingCommunications">I accept communications:</label>
+    <input type="checkbox" name="isAcceptingCommunications" formControlName="isAcceptingCommunications" class="check">
+  </div>
+  <button type="submit">Submit</button>
+  <span *ngIf="errorMessage">{{ errorMessage }}</span>
+</form>

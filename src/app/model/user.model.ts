@@ -17,7 +17,6 @@ export type UserNoId = LoginData & {
   postalCode: string;
   city: string;
   title: string;
-  dateOfBirth: string;
   isAcceptingCommunications: boolean;
 };
 
