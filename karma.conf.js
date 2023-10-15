@@ -38,6 +38,9 @@ module.exports = function (config) {
       reporters: [{ type: "text" }, { type: "lcov" }],
       includeAllSourcer: true,
     },
+    client: {
+      captureConsole: false, // Suprime la salida de la consola
+    },
     reporters: ["mocha", "kjhtml"],
     port: 9876,
     colors: true,
