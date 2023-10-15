@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -25,31 +24,22 @@ export class RegistrationComponent {
       userName: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      age: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
       addressStreet: ['', [Validators.required]],
       postalCode: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      title: ['', [Validators.required]],
-      isAcceptingCommunications: ['', [Validators.required]],
     });
   }
 
   handleRegister() {
-    if (!this.registerForm.valid) {
-      this.errorMessage = 'Please enter the data correctly.';
-      return;
-    }
-
+    this.errorMessage = null;
     const data: UserNoId = {
       ...this.registerForm.value,
     };
-    data.age = data.age.toString();
 
     this.repo.register(data).subscribe({
-      next: (_response) => {
+      next: () => {
         this.errorMessage = null;
         this.router.navigate(['/login']);
       },

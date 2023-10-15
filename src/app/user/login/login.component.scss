@@ -19,23 +19,19 @@
   }
 
   form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    input {
-      height: 40px;
-      width: 70vw;
-      max-width: 268.79px;
-      background: #edf2f7;
-      border: none;
-      border-radius: 10px;
-      padding-inline-start: 1rem;
+    mat-form-field {
+      width: 100%;
+      font-size: 0.8rem;
     }
     button {
       background-color: #bdcdd6;
-      width: 70vw;
+      width: 100%;
       max-width: 268.79px;
       height: 40px;
       border: none;
@@ -44,7 +40,7 @@
     }
   }
   .register {
-    width: 70vw;
+    width: 100%;
     max-width: 268.79px;
     height: 40px;
     border: 1px solid #4a5568;

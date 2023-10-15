@@ -11,13 +11,9 @@ export type UserNoId = LoginData & {
   firstName: string;
   lastName: string;
   email: string;
-  age: string;
-  phone: string;
   addressStreet: string;
   postalCode: string;
   city: string;
-  title: string;
-  isAcceptingCommunications: boolean;
 };
 
 export type User = WithId & UserNoId;

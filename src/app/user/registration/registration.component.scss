@@ -19,14 +19,9 @@ form {
     padding: 0.5rem;
     border-radius: 10px;
   }
-  input {
-    height: 40px;
-    width: 70vw;
-    max-width: 268.79px;
-    background: #edf2f7;
-    border: none;
-    border-radius: 10px;
-    padding-inline-start: 1rem;
+  mat-form-field {
+    width: 90%;
+    font-size: 0.8rem;
   }
   div {
     display: flex;

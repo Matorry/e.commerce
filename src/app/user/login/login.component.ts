@@ -27,13 +27,7 @@ export class LoginComponent {
   }
 
   handleSubmit() {
-    if (this.loginForm.valid) {
-      this.errorMessage = null;
-    } else {
-      this.errorMessage = 'Enter the username and password.';
-      return;
-    }
-
+    this.errorMessage = null;
     const data: LoginData = {
       ...this.loginForm.value,
     };
@@ -48,9 +42,6 @@ export class LoginComponent {
       },
     });
 
-    this.loginForm = this.fb.group({
-      userName: '',
-      password: '',
-    });
+    this.loginForm.reset();
   }
 }
