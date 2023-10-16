@@ -1,0 +1,19 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div class="cart-container">
+  <ul *ngIf="products">
+    <li *ngFor="let product of products">
+      <a [routerLink]="['/product', product.id]">
+        <img src="{{product.image}}" alt="{{product.title}}">
+        <span class="title">{{product.title}}</span>
+        <span>{{product.price}}€</span>
+      </a>
+      <span (click)="removeFromCart(product)">❌</span>
+    </li>
+  </ul>
+  <span class="price">Total : {{getTotalPrice(products)}}€</span>
+  <a [routerLink]="['/products']" class="continue">Continue shopping</a>
+  <a [routerLink]="isUserLoggedIn ? ['/purchase'] : ['/user/login']" class="continue">
+    Purchase
+  </a>
+</div>

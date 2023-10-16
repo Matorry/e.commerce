@@ -7,9 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UserRoutingModule } from './user.routing.module';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegistrationComponent],
+  declarations: [LoginComponent, RegistrationComponent, ProfileComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
