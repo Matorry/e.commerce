@@ -29,6 +29,18 @@ export class ProductService {
     });
   }
 
+  getCategoryProducts(category: string) {
+    this.repo.getCategoryProducts(category).subscribe({
+      next: (response) => {
+        this.state.setProducts(response);
+        this.state.setCurrentCategory(category);
+      },
+      error: (response) => {
+        console.log(response);
+      },
+    });
+  }
+
   addToCart(product: Product) {
     let currentCart = [] as Product[];
     this.state.getCart().subscribe((data) => (currentCart = data));

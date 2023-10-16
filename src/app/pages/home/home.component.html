@@ -1,0 +1,19 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<div>
+  <nav>
+    <a [routerLink]="'/products'" *ngFor="let category of categories" (click)="getCategory(category)">{{category}}</a>
+  </nav>
+  <ul>
+    <li *ngFor="let product of products">
+      <a [routerLink]="['/product', product.id]">
+        <img src="{{product.image}}" alt="{{product.title}}">
+        <span>{{product.price}} €</span>
+      </a>
+    </li>
+  </ul>
+  <div>
+    <span [routerLink]="'/products'" (click)="getCategory(category)" *ngFor="let category of categories"
+      [ngClass]="getCategoryClass(category)">{{category}}</span>
+  </div>
+</div>

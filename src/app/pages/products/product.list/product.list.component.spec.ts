@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { Product } from 'src/app/model/product.model';
@@ -21,7 +23,12 @@ describe('Given the class ProductListComponent', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [ProductListComponent, ProductCardComponent],
-        imports: [HttpClientTestingModule, RouterTestingModule],
+        imports: [
+          HttpClientTestingModule,
+          RouterTestingModule,
+          MatSelectModule,
+          BrowserAnimationsModule,
+        ],
         providers: [StateService, ProductService, RepoCommerceService],
       });
 
@@ -37,16 +44,6 @@ describe('Given the class ProductListComponent', () => {
       expect(component).toBeTruthy();
     });
 
-    it('Then the component should initialize products from RepoCommerceService', () => {
-      const mockProducts = [{} as Product];
-      spyOn(repo, 'getAll').and.returnValue(of(mockProducts));
-
-      component.ngOnInit();
-
-      expect(repo.getAll).toHaveBeenCalled();
-      expect(component.products).toEqual(mockProducts);
-    });
-
     it('Then should call stateService.setCart when handleAddToCart is called', () => {
       spyOn(stateService, 'setCart');
       const mockProduct = {
@@ -57,6 +54,17 @@ describe('Given the class ProductListComponent', () => {
       component.handleAddToCart(mockProduct);
 
       expect(stateService.setCart).toHaveBeenCalledWith([mockProduct]);
+    });
+
+    it('Then sould call filterProducts', () => {
+      spyOn(stateService, 'setCurrentCategory');
+      spyOn(stateService, 'setProducts');
+      spyOn(repo, 'getCategoryProducts').and.returnValue(
+        of([{} as unknown as Product])
+      );
+      component.filterProducts('');
+      expect(stateService.setCurrentCategory).toHaveBeenCalled();
+      expect(stateService.setProducts).toHaveBeenCalled();
     });
   });
 });

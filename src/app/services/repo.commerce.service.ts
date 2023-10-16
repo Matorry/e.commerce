@@ -9,28 +9,24 @@ import { Product } from '../model/product.model';
 export class RepoCommerceService {
   url: string;
   constructor(private http: HttpClient) {
-    this.url = 'https://fakestoreapi.com';
+    this.url = 'https://fakestoreapi.com/products';
   }
 
   getAll(): Observable<Product[]> {
-    return this.http.get(this.url + '/products', {}) as Observable<Product[]>;
+    return this.http.get(this.url + '', {}) as Observable<Product[]>;
   }
 
   getById(id: string): Observable<Product> {
-    return this.http.get(
-      this.url + '/products/' + id,
-      {}
-    ) as Observable<Product>;
+    return this.http.get(this.url + '/' + id, {}) as Observable<Product>;
   }
 
   getCategories(): Observable<string[]> {
     return this.http.get(this.url + '/categories', {}) as Observable<string[]>;
   }
 
-  getCategory(category: string): Observable<Product[]> {
-    return this.http.get(
-      this.url + '/categories/' + category,
-      {}
-    ) as Observable<Product[]>;
+  getCategoryProducts(category: string): Observable<Product[]> {
+    return this.http.get(this.url + '/category/' + category, {}) as Observable<
+      Product[]
+    >;
   }
 }

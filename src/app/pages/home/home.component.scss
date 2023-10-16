@@ -1,0 +1,95 @@
+div {
+  height: 87vh;
+  width: 100%;
+  nav {
+    width: 100vw;
+    display: flex;
+    height: 3rem;
+    a {
+      text-decoration: none;
+      color: black;
+      padding: 0.3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      width: 25vw;
+      border: 1px solid black;
+      background-color: #93bfcf;
+    }
+  }
+  ul {
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    height: 160px;
+    width: 90vw;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    gap: 0.5rem;
+    margin-left: 1.1rem;
+    li {
+      border-radius: 20px;
+      position: relative;
+      scroll-snap-align: center;
+      background-color: white;
+      list-style: none;
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+        border-radius: 20px;
+        img {
+          height: 90px;
+          max-width: 90px;
+        }
+      }
+    }
+  }
+
+  div {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 71%;
+    span {
+      padding-inline: 1rem;
+      padding-block: 0.5rem;
+      display: flex;
+      flex-direction: column-reverse;
+      width: 45vw;
+      height: 30vh;
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: end;
+      border-radius: 20px;
+    }
+    span:hover {
+      filter: grayscale(80%);
+      transition: all 0.5s ease-in-out;
+    }
+    .electronics {
+      background-image: url(../../../assets/electronics.webp);
+    }
+    .jewelery {
+      background-image: url(../../../assets/jewelery.webp);
+    }
+    .men {
+      background-image: url(../../../assets/men.webp);
+    }
+    .women {
+      background-image: url(../../../assets/women.webp);
+    }
+  }
+}

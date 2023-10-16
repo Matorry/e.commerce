@@ -75,5 +75,20 @@ describe('Given the class StateService', () => {
       service.setUser(user);
       service.getUser().subscribe((res) => expect(res).toEqual(user));
     });
+
+    it('Then should return the current category', () => {
+      const currentCategory = '';
+      service
+        .getCurrentCategory()
+        .subscribe((res) => expect(res).toEqual(currentCategory));
+    });
+
+    it('Then should set and return the current category', () => {
+      const currentCategory = '';
+      service.setCurrentCategory(currentCategory);
+      service
+        .getCurrentCategory()
+        .subscribe((res) => expect(res).toEqual(currentCategory));
+    });
   });
 });
