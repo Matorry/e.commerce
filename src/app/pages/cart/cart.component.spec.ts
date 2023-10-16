@@ -14,7 +14,7 @@ describe('Given the class CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
   let stateService: StateService;
-  let repo: RepoCommerceService;
+  let repoCommerce: RepoCommerceService;
   describe('When I instantiate it', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -24,7 +24,7 @@ describe('Given the class CartComponent', () => {
       });
       fixture = TestBed.createComponent(CartComponent);
       stateService = TestBed.inject(StateService);
-      repo = TestBed.inject(RepoCommerceService);
+      repoCommerce = TestBed.inject(RepoCommerceService);
       component = fixture.componentInstance;
       fixture.detectChanges();
     });
@@ -34,11 +34,12 @@ describe('Given the class CartComponent', () => {
     });
 
     it('Then should return correct star rating for a given decimal value', () => {
-      expect(component.getStarRating(4.5)).toBe('⭐⭐⭐⭐⭐');
-      expect(component.getStarRating(3.75)).toBe('⭐⭐⭐⭐☆');
-      expect(component.getStarRating(2.25)).toBe('⭐⭐☆☆☆');
-      expect(component.getStarRating(1.8)).toBe('⭐⭐☆☆☆');
-      expect(component.getStarRating(0.5)).toBe('⭐☆☆☆☆');
+      expect(component.getStarRating(4.6)).toBe('⭐⭐⭐⭐⭐');
+      expect(component.getStarRating(3.8)).toBe('⭐⭐⭐⭐☆');
+      expect(component.getStarRating(2.2)).toBe('⭐⭐☆☆☆');
+      expect(component.getStarRating(1.9)).toBe('⭐⭐☆☆☆');
+      expect(component.getStarRating(0.7)).toBe('⭐☆☆☆☆');
+      expect(component.getStarRating(0)).toBe('☆☆☆☆☆');
     });
 
     it('Then should calculate total price correctly', () => {
