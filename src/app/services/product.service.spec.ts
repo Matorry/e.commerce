@@ -21,6 +21,7 @@ describe('Given the class ProductService', () => {
             useValue: {
               getAll: () => of([] as Product[]),
               getCategories: () => of([] as string[]),
+              getCategoryProducts: () => of([] as Product[]),
             },
           },
           StateService,
@@ -43,6 +44,36 @@ describe('Given the class ProductService', () => {
 
       expect(repo.getCategories).toHaveBeenCalledWith();
       expect(stateService.setCategories).toHaveBeenCalledWith(['test']);
+    });
+
+    it('Then should call getCategoryProducts and repo returns an error', () => {
+      spyOn(repo, 'getCategoryProducts').and.returnValue(
+        throwError('Simulated error')
+      );
+      spyOn(stateService, 'setProducts');
+      spyOn(stateService, 'setCurrentCategory');
+
+      service.getCategoryProducts('');
+
+      expect(repo.getCategoryProducts).toHaveBeenCalledWith('');
+      expect(stateService.setProducts).not.toHaveBeenCalled();
+      expect(stateService.setCurrentCategory).not.toHaveBeenCalled();
+    });
+
+    it('Then should call getCategoryProducts', () => {
+      spyOn(repo, 'getCategoryProducts').and.returnValue(
+        of([{} as unknown as Product])
+      );
+      spyOn(stateService, 'setProducts');
+      spyOn(stateService, 'setCurrentCategory');
+
+      service.getCategoryProducts('');
+
+      expect(repo.getCategoryProducts).toHaveBeenCalledWith('');
+      expect(stateService.setProducts).toHaveBeenCalledWith([
+        {} as unknown as Product,
+      ]);
+      expect(stateService.setCurrentCategory).toHaveBeenCalledWith('');
     });
 
     it('Then should call setCategories and repo returns an error', () => {

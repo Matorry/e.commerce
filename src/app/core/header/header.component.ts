@@ -15,11 +15,11 @@ export class HeaderComponent {
     this.isUserLoggedIn = false;
 
     this.menuOptions = [
-      { path: '/cart', label: 'Cart' },
+      { path: 'cart', label: 'Cart' },
       { path: '/user/login', label: 'Login' },
     ];
     this.menuOptionsLoged = [
-      { path: '/cart', label: 'Cart' },
+      { path: 'cart', label: 'Cart' },
       { path: '/user', label: 'User' },
     ];
 
