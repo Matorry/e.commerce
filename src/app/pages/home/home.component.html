@@ -1,6 +1,8 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <div>
   <nav>
-    <a href="" *ngFor="let category of categories">{{category}}</a>
+    <a [routerLink]="'/products'" *ngFor="let category of categories" (click)="getCategory(category)">{{category}}</a>
   </nav>
   <ul>
     <li *ngFor="let product of products">
@@ -11,6 +13,7 @@
     </li>
   </ul>
   <div>
-    <span *ngFor="let category of categories" [ngClass]="getCategoryClass(category)">{{category}}</span>
+    <span [routerLink]="'/products'" (click)="getCategory(category)" *ngFor="let category of categories"
+      [ngClass]="getCategoryClass(category)">{{category}}</span>
   </div>
 </div>

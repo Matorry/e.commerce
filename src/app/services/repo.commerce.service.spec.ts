@@ -57,12 +57,12 @@ describe('Given the class RepoCommerceService', () => {
     it('Then should call getCategory', () => {
       const mockProducts = [{}] as unknown as Product[];
 
-      service.getCategory('jewelry').subscribe((products) => {
+      service.getCategoryProducts('jewelry').subscribe((products) => {
         expect(products).toEqual(mockProducts);
       });
 
       const req = httpMock.expectOne(
-        'https://fakestoreapi.com/products/categories/jewelry'
+        'https://fakestoreapi.com/products/category/jewelry'
       );
       expect(req.request.method).toBe('GET');
     });

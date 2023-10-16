@@ -8,7 +8,7 @@ import { StateService } from './state.service';
 
 describe('Given the class ProductService', () => {
   let service: ProductService;
-  let repoCommerceService: RepoCommerceService;
+  let repo: RepoCommerceService;
   let stateService: StateService;
 
   describe('When I access its methods', () => {
@@ -27,7 +27,7 @@ describe('Given the class ProductService', () => {
         ],
       });
       service = TestBed.inject(ProductService);
-      repoCommerceService = TestBed.inject(RepoCommerceService);
+      repo = TestBed.inject(RepoCommerceService);
       stateService = TestBed.inject(StateService);
     });
 
@@ -36,50 +36,46 @@ describe('Given the class ProductService', () => {
     });
 
     it('Then should call setCategories', () => {
-      spyOn(repoCommerceService, 'getCategories').and.returnValue(of(['test']));
+      spyOn(repo, 'getCategories').and.returnValue(of(['test']));
       spyOn(stateService, 'setCategories');
 
       service.getCategoriesList();
 
-      expect(repoCommerceService.getCategories).toHaveBeenCalledWith();
+      expect(repo.getCategories).toHaveBeenCalledWith();
       expect(stateService.setCategories).toHaveBeenCalledWith(['test']);
     });
 
     it('Then should call setCategories and repo returns an error', () => {
-      spyOn(repoCommerceService, 'getCategories').and.returnValue(
+      spyOn(repo, 'getCategories').and.returnValue(
         throwError('Simulated error')
       );
       spyOn(stateService, 'setCategories');
 
       service.getCategoriesList();
 
-      expect(repoCommerceService.getCategories).toHaveBeenCalledWith();
+      expect(repo.getCategories).toHaveBeenCalledWith();
       expect(stateService.setCategories).not.toHaveBeenCalled();
     });
 
     it('Then should call getProductList', () => {
-      spyOn(repoCommerceService, 'getAll').and.returnValue(
-        of([{ id: 1 } as Product])
-      );
+      spyOn(repo, 'getAll').and.returnValue(of([{ id: 1 } as Product]));
       spyOn(stateService, 'setProducts');
 
       service.getProductList();
 
-      expect(repoCommerceService.getAll).toHaveBeenCalledWith();
+      expect(repo.getAll).toHaveBeenCalledWith();
       expect(stateService.setProducts).toHaveBeenCalledWith([
         { id: 1 } as Product,
       ]);
     });
 
     it('Then should call getProductList and repo returns an error', () => {
-      spyOn(repoCommerceService, 'getAll').and.returnValue(
-        throwError('Simulated error')
-      );
+      spyOn(repo, 'getAll').and.returnValue(throwError('Simulated error'));
       spyOn(stateService, 'setProducts');
 
       service.getProductList();
 
-      expect(repoCommerceService.getAll).toHaveBeenCalledWith();
+      expect(repo.getAll).toHaveBeenCalledWith();
       expect(stateService.setProducts).not.toHaveBeenCalled();
     });
 

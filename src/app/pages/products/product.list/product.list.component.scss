@@ -1,1 +1,10 @@
-
+.list-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  h2 {
+    padding-bottom: 2rem;
+  }
+}

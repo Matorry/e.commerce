@@ -25,4 +25,8 @@ export class HomeComponent implements OnInit {
   getCategoryClass(category: string): string {
     return category.replace("'s clothing", '').toLowerCase();
   }
+
+  getCategory(category: string) {
+    this.service.getCategoryProducts(category);
+  }
 }

@@ -24,10 +24,9 @@ export class RepoCommerceService {
     return this.http.get(this.url + '/categories', {}) as Observable<string[]>;
   }
 
-  getCategory(category: string): Observable<Product[]> {
-    return this.http.get(
-      this.url + '/categories/' + category,
-      {}
-    ) as Observable<Product[]>;
+  getCategoryProducts(category: string): Observable<Product[]> {
+    return this.http.get(this.url + '/category/' + category, {}) as Observable<
+      Product[]
+    >;
   }
 }

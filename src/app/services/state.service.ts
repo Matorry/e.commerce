@@ -9,12 +9,14 @@ import { LogedUser } from '../model/user.model';
 export class StateService {
   private productList$: BehaviorSubject<Product[]>;
   private categories$: BehaviorSubject<string[]>;
+  private currentCategory$: BehaviorSubject<string>;
   private cart$: BehaviorSubject<Product[]>;
   private user$: BehaviorSubject<LogedUser>;
 
   constructor() {
     this.productList$ = new BehaviorSubject([] as Product[]);
     this.categories$ = new BehaviorSubject([] as string[]);
+    this.currentCategory$ = new BehaviorSubject('' as string);
     this.cart$ = new BehaviorSubject([] as Product[]);
     this.user$ = new BehaviorSubject({} as LogedUser);
   }
@@ -25,6 +27,14 @@ export class StateService {
 
   setUser(products: LogedUser) {
     this.user$.next(products);
+  }
+
+  getCurrentCategory() {
+    return this.currentCategory$.asObservable();
+  }
+
+  setCurrentCategory(category: string) {
+    this.currentCategory$.next(category);
   }
 
   getProducts() {
