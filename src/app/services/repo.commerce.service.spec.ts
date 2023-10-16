@@ -48,7 +48,9 @@ describe('Given the class RepoCommerceService', () => {
         expect(sections).toEqual(mockSections);
       });
 
-      const req = httpMock.expectOne('https://fakestoreapi.com/categories');
+      const req = httpMock.expectOne(
+        'https://fakestoreapi.com/products/categories'
+      );
       expect(req.request.method).toBe('GET');
     });
 
@@ -60,7 +62,7 @@ describe('Given the class RepoCommerceService', () => {
       });
 
       const req = httpMock.expectOne(
-        'https://fakestoreapi.com/categories/jewelry'
+        'https://fakestoreapi.com/products/categories/jewelry'
       );
       expect(req.request.method).toBe('GET');
     });

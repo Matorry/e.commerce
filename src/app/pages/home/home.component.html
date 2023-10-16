@@ -1,0 +1,16 @@
+<div>
+  <nav>
+    <a href="" *ngFor="let category of categories">{{category}}</a>
+  </nav>
+  <ul>
+    <li *ngFor="let product of products">
+      <a [routerLink]="['/product', product.id]">
+        <img src="{{product.image}}" alt="{{product.title}}">
+        <span>{{product.price}} €</span>
+      </a>
+    </li>
+  </ul>
+  <div>
+    <span *ngFor="let category of categories" [ngClass]="getCategoryClass(category)">{{category}}</span>
+  </div>
+</div>
