@@ -1,16 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PurchaseHistoryComponent } from './purchase-history/purchase-history.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UserRoutingModule } from './user.routing.module';
-import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegistrationComponent, ProfileComponent],
+  declarations: [
+    LoginComponent,
+    RegistrationComponent,
+    ProfileComponent,
+    PurchaseHistoryComponent,
+  ],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -18,6 +26,10 @@ import { ProfileComponent } from './profile/profile.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
   ],
 })
 export class UserModule {}

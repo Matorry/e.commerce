@@ -1,40 +1,57 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { LogedUser, LoginData, User, UserNoId } from '../model/user.model';
+import { StateService } from './state.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RepoUserService {
   url: string;
-  constructor(private http: HttpClient) {
+  token = '';
+  constructor(private http: HttpClient, private state: StateService) {
     this.url = 'http://localhost:4300/users';
+    this.state.getUser().subscribe((resp) => (this.token = resp.token));
   }
 
   register(data: UserNoId): Observable<User> {
     const url = this.url + '/register';
-    return this.http.post(url, data).pipe(
-      map((response) => {
-        return response as User;
-      }),
-      catchError((error) => {
-        return throwError(
-          () => new Error(error.error.statusMessage + ' , user alredy exist')
-        );
-      })
-    );
+    const response = this.http
+      .post<User>(url, data)
+      .pipe(catchError((error) => throwError(() => error.error)));
+    return response;
   }
   login(data: LoginData): Observable<LogedUser> {
     const url = this.url + '/login';
-    return this.http.patch(url, data).pipe(
-      map((response) => {
-        return response as LogedUser;
-      }),
-      catchError((error) => {
-        return throwError(() => new Error(error.error.message));
+    const response = this.http.patch<LogedUser>(url, data);
+    response.pipe(catchError((error) => throwError(() => error.error.message)));
+
+    return response;
+  }
+
+  patch(data: Partial<User>, id: string): Observable<User> {
+    const url = this.url + `/${id}`;
+    const response = this.http.patch<User>(url, data, {
+      headers: {
+        ['Authorization']: `Bearer ${this.token}`,
+      },
+    });
+    response.pipe(catchError((error) => throwError(() => error.error.message)));
+
+    return response;
+  }
+
+  delete(id: string): Observable<void> {
+    const url = this.url + `/${id}`;
+    const response = this.http
+      .delete<void>(url, {
+        headers: {
+          ['Authorization']: `Bearer ${this.token}`,
+        },
       })
-    );
+      .pipe(catchError((error) => throwError(() => error)));
+    return response;
   }
 }

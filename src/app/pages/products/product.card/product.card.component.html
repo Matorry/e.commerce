@@ -1,18 +1,22 @@
-<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
-<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <ul>
-  <li *ngFor="let item of products">
+  <mat-card *ngFor="let item of products" class="product-card">
     <a [routerLink]="['/product', item.id]">
-      <img src="{{item.image}}" alt="{{item.title}}">
-      <span>{{item.title}}</span>
+      <img mat-card-image [src]="item.image" alt="{{ item.title }}" class="product-image">
+      <mat-card-title class="product-title">{{ item.title }}</mat-card-title>
     </a>
-    <div class="container">
-      <span>{{ getStarRating(item.rating.rate) }} </span>
-      <span class="votes">{{item.rating.count}} votes</span>
-    </div>
-    <div>
-      <span>{{item.price}}€</span>
-      <span (click)="addToCart(item)">🛒</span>
-    </div>
-  </li>
+    <mat-card-content class="product-details">
+      <div class="product-rating">
+        <span>{{ getStarRating(item.rating.rate) }}</span>
+        <span class="votes">{{ item.rating.count }} votes</span>
+      </div>
+      <div class="product-price">
+        <span>{{ item.price }}€</span>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="product-actions">
+      <button mat-icon-button (click)="addToCart(item)">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </ul>

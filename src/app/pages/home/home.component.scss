@@ -2,21 +2,10 @@ div {
   height: 87vh;
   width: 100%;
   nav {
-    width: 100vw;
-    display: flex;
-    height: 3rem;
+    padding: 0px;
     a {
-      text-decoration: none;
-      color: black;
-      padding: 0.3rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      text-align: center;
-      width: 25vw;
-      border: 1px solid black;
-      background-color: #93bfcf;
+      padding: 0px;
+      width: 20vw;
     }
   }
   ul {
@@ -24,12 +13,12 @@ div {
     display: flex;
     align-items: center;
     height: 160px;
-    width: 90vw;
+    width: 95vw;
     overflow-x: scroll;
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
     gap: 0.5rem;
-    margin-left: 1.1rem;
+    margin-inline: 2.5vw;
     li {
       border-radius: 20px;
       position: relative;

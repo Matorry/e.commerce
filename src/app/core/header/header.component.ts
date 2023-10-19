@@ -20,7 +20,7 @@ export class HeaderComponent {
     ];
     this.menuOptionsLoged = [
       { path: 'cart', label: 'Cart' },
-      { path: '/user', label: 'User' },
+      { path: '/user/profile', label: 'Profile' },
     ];
 
     this.state.getUser().subscribe((user) => {

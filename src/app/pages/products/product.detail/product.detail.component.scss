@@ -1,31 +1,36 @@
-div {
+.details {
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
-  .details {
-    background-color: white;
-    border-radius: 20px;
-    border: 1px solid black;
+  gap: 4rem;
+  padding: 2rem;
+
+  mat-card {
     padding: 2rem;
     gap: 1rem;
     text-align: center;
+
+    mat-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      mat-card-title {
+        text-align: center;
+      }
+    }
+
+    div {
+      padding: 1rem;
+    }
+
     img {
       width: 70vw;
     }
+
     .price-container {
       flex-direction: row;
       gap: 1rem;
     }
-  }
-  a {
-    text-decoration: none;
-    border: 1px solid black;
-    padding-inline: 1rem;
-    padding-block: 0.5rem;
-    border-radius: 20px;
-    background-color: #eee9da;
-    color: black;
   }
 }

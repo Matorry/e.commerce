@@ -1,1 +1,30 @@
+mat-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  mat-card-content {
+    form {
+      padding: 1.4rem;
+      mat-icon {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
 
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.input-container input {
+  flex: 1;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
