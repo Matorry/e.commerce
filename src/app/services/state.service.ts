@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../model/product.model';
-import { LogedUser } from '../model/user.model';
+import { LogedUser, User } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,8 +25,8 @@ export class StateService {
     return this.user$.asObservable();
   }
 
-  setUser(products: LogedUser) {
-    this.user$.next(products);
+  setUser(user: LogedUser) {
+    this.user$.next(user);
   }
 
   getCurrentCategory() {
@@ -59,5 +59,9 @@ export class StateService {
 
   getCart() {
     return this.cart$.asObservable();
+  }
+
+  logOut() {
+    this.user$.next({ user: {} as User, token: '' });
   }
 }

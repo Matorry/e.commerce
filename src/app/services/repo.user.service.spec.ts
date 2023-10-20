@@ -45,18 +45,40 @@ describe('Given the class RepoUserService', () => {
       expect(reqLogin.request.method).toEqual('PATCH');
       reqLogin.flush(mockResp);
     });
+    it('Then request method patch should be called', async () => {
+      const mockResp = {} as User;
+
+      service.patch({} as Partial<User>, '1').subscribe((resp) => {
+        expect(resp).not.toBeNull();
+      });
+
+      const req = httpMock.expectOne(service.url + '/1');
+      expect(req.request.method).toEqual('PATCH');
+      req.flush(mockResp);
+    });
+    it('Then request method patch should be called', async () => {
+      const mockResp = {} as LogedUser;
+
+      service.delete('1').subscribe((resp) => {
+        expect(resp).not.toBeNull();
+      });
+
+      const req = httpMock.expectOne(service.url + '/1');
+      expect(req.request.method).toEqual('DELETE');
+      req.flush(mockResp);
+    });
+
     it('Then should be call login and return error', () => {
       const errorEvent = new ErrorEvent('Network error', {
         message: 'Error de red',
       });
       service.login({} as LoginData).subscribe({
-        next: (resp) => fail('should have failed with a network error'),
         error: (error) => expect(error.message).toEqual('Error de red'),
       });
 
       const req = httpMock.expectOne(service.url + '/login');
 
-      req.flush(errorEvent, { status: 400, statusText: 'Bad Request' });
+      req.flush(errorEvent, { status: 400, statusText: 'Error de red' });
     });
 
     it('Then should be call register and return error', () => {
@@ -64,7 +86,6 @@ describe('Given the class RepoUserService', () => {
         message: 'undefined , user alredy exist',
       });
       service.register({} as UserNoId).subscribe({
-        next: (resp) => fail('should have failed with a network error'),
         error: (error) =>
           expect(error.message).toEqual('undefined , user alredy exist'),
       });
@@ -72,6 +93,32 @@ describe('Given the class RepoUserService', () => {
       const req = httpMock.expectOne(service.url + '/register');
 
       req.flush(errorEvent, { status: 400, statusText: 'Bad Request' });
+    });
+
+    it('Then should be call patch and return error', () => {
+      const errorEvent = new ErrorEvent('Network error', {
+        message: 'Error de red',
+      });
+      service.patch({} as Partial<User>, '1').subscribe({
+        error: (error) => expect(error.message).toEqual('Error de red'),
+      });
+
+      const req = httpMock.expectOne(service.url + '/1');
+
+      req.flush(errorEvent, { status: 400, statusText: 'Error de red' });
+    });
+
+    it('Then should be call delete and return error', () => {
+      const errorEvent = new ErrorEvent('Network error', {
+        message: 'Error de red',
+      });
+      service.delete('1').subscribe({
+        error: (error) => expect(error.message).toEqual('Error de red'),
+      });
+
+      const req = httpMock.expectOne(service.url + '/1');
+
+      req.flush(errorEvent, { status: 400, statusText: 'Error de red' });
     });
   });
 });

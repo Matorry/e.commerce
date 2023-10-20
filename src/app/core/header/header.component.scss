@@ -1,14 +1,26 @@
 header {
-  display: flex;
-  flex-direction: row;
-  padding: 12px;
   background-color: #bdcdd6;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
-  height: 8vh;
   align-items: center;
-  justify-content: space-between;
-  h1 {
-    padding-inline-start: 5vw;
-    color: black;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  div {
+    display: flex;
+    flex-direction: row;
+    padding: 12px;
+    height: 8vh;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+      padding-inline-start: 5vw;
+      color: black;
+    }
   }
+}
+.a {
+  padding: 0px;
+  text-decoration: none;
+  color: black;
 }

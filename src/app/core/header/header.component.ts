@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 import { StateService } from 'src/app/services/state.service';
 import { MenuOption } from 'src/app/types/menu.options';
 
@@ -11,20 +12,33 @@ export class HeaderComponent {
   menuOptions: MenuOption[];
   menuOptionsLoged: MenuOption[];
   isUserLoggedIn: boolean;
-  constructor(private state: StateService) {
+  categories: string[] = [];
+  constructor(private state: StateService, private service: ProductService) {
     this.isUserLoggedIn = false;
+    this.state.getCategories().subscribe((resp) => (this.categories = resp));
 
     this.menuOptions = [
-      { path: 'cart', label: 'Cart' },
-      { path: '/user/login', label: 'Login' },
+      { path: 'home', label: 'home' },
+      { path: 'cart', label: 'shopping_cart' },
+      { path: '/user/login', label: 'person_outline' },
     ];
+
     this.menuOptionsLoged = [
-      { path: 'cart', label: 'Cart' },
-      { path: '/user', label: 'User' },
+      { path: 'home', label: 'home' },
+      { path: 'cart', label: 'shopping_cart' },
+      { path: '/user/profile', label: 'person' },
     ];
 
     this.state.getUser().subscribe((user) => {
-      if (user.token) this.isUserLoggedIn = true;
+      if (user.token) {
+        this.isUserLoggedIn = true;
+      } else {
+        this.isUserLoggedIn = false;
+      }
     });
+  }
+
+  getCategory(category: string) {
+    this.service.getCategoryProducts(category);
   }
 }

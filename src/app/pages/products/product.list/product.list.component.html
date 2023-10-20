@@ -1,13 +1,4 @@
 <div class="list-container">
   <h2>{{category.toUpperCase()}}</h2>
-  <mat-form-field>
-    <mat-label>Select category</mat-label>
-    <mat-select (selectionChange)="filterProducts($event.value)">
-      <mat-option *ngFor="let category of categories" [value]="category">
-        {{category}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
   <e-commerce-product-card [products]="products" (product)="handleAddToCart($event)"></e-commerce-product-card>
 </div>

@@ -1,0 +1,12 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div *ngFor="let purchase of purchaseHistory" class="purchase">
+  <div class="purchase-header" (click)="togglePurchase(purchase)">
+    {{ purchase.date }}
+  </div>
+  <ul *ngIf="purchase.isOpen" class="products">
+    <li *ngFor="let product of purchase.products" class="product">
+      {{ product.title }} - {{ product.price }}
+    </li>
+  </ul>
+</div>

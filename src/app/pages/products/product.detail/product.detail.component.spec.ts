@@ -6,6 +6,11 @@ import { Product } from 'src/app/model/product.model';
 import { StateService } from 'src/app/services/state.service';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductDetailComponent } from './product.detail.component';
 
 describe('Given the class ProductDetailComponent', () => {
@@ -17,7 +22,15 @@ describe('Given the class ProductDetailComponent', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [ProductDetailComponent],
-        imports: [HttpClientTestingModule, RouterTestingModule],
+        imports: [
+          HttpClientTestingModule,
+          RouterTestingModule,
+          BrowserAnimationsModule,
+          MatIconModule,
+          MatCardModule,
+          MatTabsModule,
+          MatButtonModule,
+        ],
         providers: [
           StateService,
           {
