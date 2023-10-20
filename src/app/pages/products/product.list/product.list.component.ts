@@ -15,7 +15,6 @@ export class ProductListComponent {
 
   constructor(private state: StateService, private service: ProductService) {
     this.state.getProducts().subscribe((resp) => (this.products = resp));
-    this.state.getCategories().subscribe((resp) => (this.categories = resp));
     this.state.getCurrentCategory().subscribe((resp) => (this.category = resp));
   }
 

@@ -25,20 +25,22 @@ export class RepoUserService {
   }
   login(data: LoginData): Observable<LogedUser> {
     const url = this.url + '/login';
-    const response = this.http.patch<LogedUser>(url, data);
-    response.pipe(catchError((error) => throwError(() => error.error.message)));
+    const response = this.http
+      .patch<LogedUser>(url, data)
+      .pipe(catchError((error) => throwError(() => error.error)));
 
     return response;
   }
 
   patch(data: Partial<User>, id: string): Observable<User> {
     const url = this.url + `/${id}`;
-    const response = this.http.patch<User>(url, data, {
-      headers: {
-        ['Authorization']: `Bearer ${this.token}`,
-      },
-    });
-    response.pipe(catchError((error) => throwError(() => error.error.message)));
+    const response = this.http
+      .patch<User>(url, data, {
+        headers: {
+          ['Authorization']: `Bearer ${this.token}`,
+        },
+      })
+      .pipe(catchError((error) => throwError(() => error.error)));
 
     return response;
   }
@@ -51,7 +53,7 @@ export class RepoUserService {
           ['Authorization']: `Bearer ${this.token}`,
         },
       })
-      .pipe(catchError((error) => throwError(() => error)));
+      .pipe(catchError((error) => throwError(() => error.error)));
     return response;
   }
 }

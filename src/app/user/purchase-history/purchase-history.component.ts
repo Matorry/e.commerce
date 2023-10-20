@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Purchase } from 'src/app/model/user.model';
 
 @Component({
@@ -6,12 +6,13 @@ import { Purchase } from 'src/app/model/user.model';
   templateUrl: './purchase-history.component.html',
   styleUrls: ['./purchase-history.component.scss'],
 })
-export class PurchaseHistoryComponent {
+export class PurchaseHistoryComponent implements OnInit {
   @Input() purchaseHistory: Purchase[] = [];
 
-  constructor() {
+  ngOnInit(): void {
     this.purchaseHistory.forEach((element) => (element.isOpen = false));
   }
+
   togglePurchase(purchase: Purchase) {
     purchase.isOpen = !purchase.isOpen;
   }

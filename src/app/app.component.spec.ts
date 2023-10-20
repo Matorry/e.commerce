@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
@@ -7,7 +8,7 @@ describe('Given the component AppComponent', () => {
   describe('When I instantiate it', () => {
     beforeEach(() =>
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule, CoreModule],
+        imports: [RouterTestingModule, CoreModule, HttpClientTestingModule],
         declarations: [AppComponent],
       })
     );

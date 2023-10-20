@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LogedUser, User } from 'src/app/model/user.model';
 import { RepoUserService } from 'src/app/services/repo.user.service';
 import { StateService } from 'src/app/services/state.service';
@@ -17,7 +18,8 @@ export class ProfileComponent {
   constructor(
     private state: StateService,
     private formBuilder: FormBuilder,
-    private repo: RepoUserService
+    private repo: RepoUserService,
+    private router: Router
   ) {
     this.state.getUser().subscribe((resp) => (this.user = resp));
 
@@ -75,5 +77,10 @@ export class ProfileComponent {
       next: () => (this.errorMessage = null),
       error: (error) => (this.errorMessage = error.message),
     });
+  }
+
+  logOut() {
+    this.state.logOut();
+    this.router.navigate(['home']);
   }
 }

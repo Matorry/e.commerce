@@ -1,6 +1,9 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <mat-card>
   <mat-card-header>
     <mat-card-title>Your Profile</mat-card-title>
+    <span (click)="logOut()">LogOut<mat-icon>no_meeting_room</mat-icon></span>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="profileForm" (ngSubmit)="saveChanges()">

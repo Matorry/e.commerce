@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { Product } from '../model/product.model';
-import { LogedUser } from '../model/user.model';
+import { LogedUser, User } from '../model/user.model';
 import { StateService } from './state.service';
 
 describe('Given the class StateService', () => {
@@ -89,6 +89,12 @@ describe('Given the class StateService', () => {
       service
         .getCurrentCategory()
         .subscribe((res) => expect(res).toEqual(currentCategory));
+    });
+
+    it('Then should logout the user', () => {
+      const user = { user: {} as User, token: '' };
+      service.logOut();
+      service.getUser().subscribe((res) => expect(res).toEqual(user));
     });
   });
 });

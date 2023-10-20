@@ -1,7 +1,7 @@
 <nav>
   <ul>
     <li *ngFor="let item of menuOptions">
-      <a [routerLink]="item.path">{{item.label}}</a>
+      <a [routerLink]="item.path"><mat-icon>{{item.label}}</mat-icon></a>
     </li>
   </ul>
 </nav>

@@ -1,10 +1,6 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <div>
-  <nav mat-tab-nav-bar>
-    <a mat-tab-link *ngFor="let category of categories" (click)="getCategory(category)" [routerLink]="'/products'">
-      {{category.replace(' clothing', '').charAt(0).toUpperCase() + category.replace(' clothing', '').slice(1)}} </a>
-  </nav>
   <ul>
     <li *ngFor="let product of products">
       <a [routerLink]="['/product', product.id]">
