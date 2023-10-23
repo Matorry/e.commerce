@@ -77,6 +77,8 @@ export class ProfileComponent {
       next: () => (this.errorMessage = null),
       error: (error) => (this.errorMessage = error.message),
     });
+    this.state.logOut();
+    this.router.navigate(['home']);
   }
 
   logOut() {

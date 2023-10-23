@@ -13,7 +13,7 @@
   </ul>
   <span class="price">Total : {{getTotalPrice(products)}}€</span>
   <a [routerLink]="['/products']" class="continue">Continue shopping</a>
-  <a [routerLink]="isUserLoggedIn ? ['/purchase'] : ['/user/login']" class="continue">
+  <a [routerLink]="isUserLoggedIn ? ['/payment'] : ['/user/login']" class="continue">
     Purchase
   </a>
 </div>

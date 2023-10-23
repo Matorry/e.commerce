@@ -1,4 +1,11 @@
-div {
+.cart-container {
+  width: 90vw;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
   ul {
     justify-content: center;
     align-items: center;
@@ -42,5 +49,13 @@ div {
   .price {
     width: 90vw;
     text-align: end;
+  }
+  form {
+    width: 90vw;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
