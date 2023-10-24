@@ -10,7 +10,8 @@ export class PurchaseHistoryComponent implements OnInit {
   @Input() purchaseHistory: Purchase[] = [];
 
   ngOnInit(): void {
-    this.purchaseHistory.forEach((element) => (element.isOpen = false));
+    if (this.purchaseHistory)
+      this.purchaseHistory.forEach((element) => (element.isOpen = false));
   }
 
   togglePurchase(purchase: Purchase) {

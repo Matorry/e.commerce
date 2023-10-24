@@ -36,6 +36,7 @@ export class RegistrationComponent {
     this.errorMessage = null;
     const data: UserNoId = {
       ...this.registerForm.value,
+      purchaseHistory: [],
     };
 
     this.repo.register(data).subscribe({

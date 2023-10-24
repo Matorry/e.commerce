@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './pages/cart/cart.component';
 import { HomeComponent } from './pages/home/home.component';
+import { PaymentPageComponent } from './pages/payment.page/payment.page.component';
 import { ProductDetailComponent } from './pages/products/product.detail/product.detail.component';
 import { ProductListComponent } from './pages/products/product.list/product.list.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
+  { path: 'payment', component: PaymentPageComponent },
   { path: '**', redirectTo: 'home' },
 ];
 

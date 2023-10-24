@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Component } from '@angular/core';
 import { Product } from 'src/app/model/product.model';
 import { ProductService } from 'src/app/services/product.service';
@@ -33,11 +34,6 @@ export class CartComponent {
   }
 
   getTotalPrice(products: Product[]) {
-    const total = Number(
-      products
-        .reduce((accumulator, product) => accumulator + product.price, 0)
-        .toFixed(2)
-    );
-    return (total * 100) / 100;
+    return this.service.getTotalPrice(products);
   }
 }

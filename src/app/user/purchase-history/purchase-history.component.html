@@ -6,7 +6,12 @@
   </div>
   <ul *ngIf="purchase.isOpen" class="products">
     <li *ngFor="let product of purchase.products" class="product">
-      {{ product.title }} - {{ product.price }}
+      <a [routerLink]="['/product', product.id]">
+        <img src="{{product.image}}" alt="{{product.title}}">
+        <span class="title">{{product.title}}</span>
+        <span>{{product.price}}€</span>
+      </a>
     </li>
+    <span class="price">Total : {{purchase.amount}}€</span>
   </ul>
 </div>

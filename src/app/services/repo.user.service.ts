@@ -33,6 +33,7 @@ export class RepoUserService {
   }
 
   patch(data: Partial<User>, id: string): Observable<User> {
+    console.log(data);
     const url = this.url + `/${id}`;
     const response = this.http
       .patch<User>(url, data, {

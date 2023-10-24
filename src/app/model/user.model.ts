@@ -24,6 +24,7 @@ export type UserNoId = LoginData & {
   postalCode: string;
   city: string;
   purchaseHistory: Purchase[];
+  role: 'user' | 'admin';
 };
 
 export type User = WithId & UserNoId;

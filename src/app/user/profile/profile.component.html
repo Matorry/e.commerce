@@ -5,6 +5,7 @@
     <mat-card-title>Your Profile</mat-card-title>
     <span (click)="logOut()">LogOut<mat-icon>no_meeting_room</mat-icon></span>
   </mat-card-header>
+  <a *ngIf="user.user.role === 'admin'" [routerLink]="['/add-item']">Add article</a>
   <mat-card-content>
     <form [formGroup]="profileForm" (ngSubmit)="saveChanges()">
       <mat-form-field>
