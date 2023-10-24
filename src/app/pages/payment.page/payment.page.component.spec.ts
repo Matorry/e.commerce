@@ -108,15 +108,15 @@ describe('PaymentPageComponent', () => {
   it('should submit the form and update user purchase history', fakeAsync(() => {
     const user: User = {
       id: '1',
-      userName: 'test',
-      password: 'test',
+      userName: 'test err',
+      password: 'test err',
       purchaseHistory: [],
-      firstName: 'test',
-      lastName: 'test',
-      email: 'test',
-      addressStreet: 'test',
-      postalCode: 'test',
-      city: 'test',
+      firstName: 'test err',
+      lastName: 'test err',
+      email: 'test err',
+      addressStreet: 'test err',
+      postalCode: 'test err',
+      city: 'test err',
       role: 'user',
     };
     component.user = user;
@@ -127,21 +127,21 @@ describe('PaymentPageComponent', () => {
       throwError(error)
     );
     spyOn(TestBed.inject(ProductService), 'clearCart');
-    spyOn(TestBed.inject(ProductService), 'getTotalPrice').and.returnValue(100);
+    spyOn(TestBed.inject(ProductService), 'getTotalPrice').and.returnValue(0);
     spyOn(TestBed.inject(StateService), 'getUser').and.returnValue(
-      of({ user: user, token: '1' })
+      of({ user: user, token: '2' })
     );
     spyOn(TestBed.inject(StateService), 'getCart').and.returnValue(
       of([
-        { product: 'Product 1' } as unknown as Product,
-        { product: 'Product 2' } as unknown as Product,
+        { product: 'Product 3' } as unknown as Product,
+        { product: 'Product 4' } as unknown as Product,
       ])
     );
 
     component.paymentForm.setValue({
-      creditCardNumber: '1234123412341234',
-      expirationDate: '12/12',
-      securityCode: '123',
+      creditCardNumber: '1234567890123456',
+      expirationDate: '01/01',
+      securityCode: '456',
     });
 
     component.onSubmit();
@@ -151,7 +151,7 @@ describe('PaymentPageComponent', () => {
     expect(user.purchaseHistory.length).toBe(1);
     const purchase: Purchase = user.purchaseHistory[0];
     expect(purchase.products).toEqual([]);
-    expect(purchase.amount).toBe('100');
+    expect(purchase.amount).toBe('0');
     expect(TestBed.inject(RepoUserService).patch).toHaveBeenCalled();
     expect(TestBed.inject(ProductService).clearCart).toHaveBeenCalled();
   }));
