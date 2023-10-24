@@ -55,23 +55,13 @@ export class PaymentPageComponent {
       const month = String(today.getMonth() + 1).padStart(2, '0');
       const day = String(today.getDate()).padStart(2, '0');
       const formattedDate = `${day}-${month}-${year}`;
-      if (this.user.purchaseHistory) {
-        this.user.purchaseHistory.push({
-          products: this.products,
-          date: formattedDate,
-          amount: this.getTotalPrice(this.products).toString(),
-          isOpen: false,
-        });
-      } else {
-        this.user.purchaseHistory = [
-          {
-            products: this.products,
-            date: formattedDate,
-            amount: this.getTotalPrice(this.products).toString(),
-            isOpen: false,
-          },
-        ];
-      }
+
+      this.user.purchaseHistory.push({
+        products: this.products,
+        date: formattedDate,
+        amount: this.getTotalPrice(this.products).toString(),
+        isOpen: false,
+      });
 
       this.repo.patch(this.user, this.user.id).subscribe({
         next: () => (
