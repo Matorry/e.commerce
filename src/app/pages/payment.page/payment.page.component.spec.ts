@@ -50,7 +50,7 @@ describe('PaymentPageComponent', () => {
       { price: 30 } as Product,
     ];
 
-    spyOn(TestBed.get(ProductService), 'getTotalPrice').and.returnValue(60);
+    spyOn(TestBed.inject(ProductService), 'getTotalPrice').and.returnValue(60);
 
     const totalPrice = component.getTotalPrice(products);
 
