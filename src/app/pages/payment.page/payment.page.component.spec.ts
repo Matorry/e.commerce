@@ -120,14 +120,6 @@ describe('PaymentPageComponent', () => {
       role: 'user',
     };
     component.user = user;
-
-    const error = () => new Error('Error de inicio de sesión');
-
-    spyOn(TestBed.inject(RepoUserService), 'patch').and.returnValue(
-      throwError(error)
-    );
-    spyOn(TestBed.inject(ProductService), 'clearCart');
-    spyOn(TestBed.inject(ProductService), 'getTotalPrice').and.returnValue(0);
     spyOn(TestBed.inject(StateService), 'getUser').and.returnValue(
       of({ user: user, token: '2' })
     );
@@ -137,6 +129,13 @@ describe('PaymentPageComponent', () => {
         { product: 'Product 4' } as unknown as Product,
       ])
     );
+    const error = () => new Error('Error de inicio de sesión');
+
+    spyOn(TestBed.inject(RepoUserService), 'patch').and.returnValue(
+      throwError(error)
+    );
+    spyOn(TestBed.inject(ProductService), 'clearCart');
+    spyOn(TestBed.inject(ProductService), 'getTotalPrice').and.returnValue(0);
 
     component.paymentForm.setValue({
       creditCardNumber: '1234567890123456',
@@ -148,11 +147,11 @@ describe('PaymentPageComponent', () => {
 
     tick();
 
+    expect(TestBed.inject(RepoUserService).patch).toHaveBeenCalled();
+    expect(TestBed.inject(ProductService).clearCart).toHaveBeenCalled();
     expect(user.purchaseHistory.length).toBe(1);
     const purchase: Purchase = user.purchaseHistory[0];
     expect(purchase.products).toEqual([]);
     expect(purchase.amount).toBe('0');
-    expect(TestBed.inject(RepoUserService).patch).toHaveBeenCalled();
-    expect(TestBed.inject(ProductService).clearCart).toHaveBeenCalled();
   }));
 });
