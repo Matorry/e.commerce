@@ -12,7 +12,7 @@ export class RepoUserService {
   url: string;
   token = '';
   constructor(private http: HttpClient, private state: StateService) {
-    this.url = 'http://localhost:4300/users';
+    this.url = 'https://register-service.onrender.com/users';
     this.state.getUser().subscribe((resp) => (this.token = resp.token));
   }
 
@@ -33,7 +33,6 @@ export class RepoUserService {
   }
 
   patch(data: Partial<User>, id: string): Observable<User> {
-    console.log(data);
     const url = this.url + `/${id}`;
     const response = this.http
       .patch<User>(url, data, {

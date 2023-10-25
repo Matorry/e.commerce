@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventEmitter } from '@angular/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Product } from 'src/app/model/product.model';
 import { ProductCardComponent } from './product.card.component';
 
@@ -11,6 +13,7 @@ describe('Given the class ProductCardComponent', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [ProductCardComponent],
+        imports: [BrowserAnimationsModule, MatSnackBarModule],
       });
       fixture = TestBed.createComponent(ProductCardComponent);
       component = fixture.componentInstance;

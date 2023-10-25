@@ -11,22 +11,23 @@ export class StateService {
   private categories$: BehaviorSubject<string[]>;
   private currentCategory$: BehaviorSubject<string>;
   private cart$: BehaviorSubject<Product[]>;
-  private user$: BehaviorSubject<LogedUser>;
+  private logedUser$: BehaviorSubject<LogedUser>;
 
   constructor() {
     this.productList$ = new BehaviorSubject([] as Product[]);
     this.categories$ = new BehaviorSubject([] as string[]);
     this.currentCategory$ = new BehaviorSubject('' as string);
     this.cart$ = new BehaviorSubject([] as Product[]);
-    this.user$ = new BehaviorSubject({} as LogedUser);
+    this.logedUser$ = new BehaviorSubject({} as LogedUser);
   }
 
   getUser() {
-    return this.user$.asObservable();
+    return this.logedUser$.asObservable();
   }
 
-  setUser(user: LogedUser) {
-    this.user$.next(user);
+  setUser(logedUser?: LogedUser, user?: User) {
+    if (logedUser) this.logedUser$.next(logedUser);
+    if (user) this.logedUser$.next({ ...this.logedUser$.value, user });
   }
 
   getCurrentCategory() {
@@ -62,6 +63,6 @@ export class StateService {
   }
 
   logOut() {
-    this.user$.next({ user: {} as User, token: '' });
+    this.logedUser$.next({ user: {} as User, token: '' });
   }
 }
