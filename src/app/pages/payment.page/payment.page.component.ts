@@ -64,8 +64,10 @@ export class PaymentPageComponent {
       });
 
       this.repo.patch(this.user, this.user.id).subscribe({
-        next: () => (
-          (this.errorMessage = null), this.router.navigate(['/user/profile'])
+        next: (resp) => (
+          this.state.setUser(undefined, resp),
+          (this.errorMessage = null),
+          this.router.navigate(['/user/profile'])
         ),
         error: (error) => (this.errorMessage = error.message),
       });

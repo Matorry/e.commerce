@@ -1,4 +1,9 @@
 div {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 0.5rem;
   ul {
     justify-content: center;
     align-items: center;
@@ -13,7 +18,7 @@ div {
       justify-content: space-between;
       align-items: center;
       height: 5vh;
-      width: 90vw;
+      width: 85vw;
       background-color: white;
       list-style: none;
       border: 1px solid black;
@@ -42,5 +47,6 @@ div {
   .price {
     width: 90vw;
     text-align: end;
+    padding: 1rem;
   }
 }

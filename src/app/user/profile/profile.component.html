@@ -1,9 +1,9 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <mat-card>
+  <span (click)="logOut()"><mat-icon>no_meeting_room</mat-icon></span>
   <mat-card-header>
     <mat-card-title>Your Profile</mat-card-title>
-    <span (click)="logOut()">LogOut<mat-icon>no_meeting_room</mat-icon></span>
   </mat-card-header>
   <a *ngIf="user.user.role === 'admin'" [routerLink]="['/add-item']">Add article</a>
   <mat-card-content>
@@ -52,6 +52,7 @@
         <button mat-raised-button color="basic" type="submit">Save Changes</button>
       </div>
     </form>
+    <h3 *ngIf="user.user.purchaseHistory.length > 0">Shopping history</h3>
     <e-commerce-purchase-history [purchaseHistory]="user.user.purchaseHistory"></e-commerce-purchase-history>
     <div class="button-container">
       <button mat-raised-button color="warn" (click)="deleteAccount()">Delete Account</button>
