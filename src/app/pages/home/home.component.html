@@ -10,7 +10,7 @@
     </li>
   </ul>
   <div>
-    <span [routerLink]="'/products'" (click)="getCategory(category)" *ngFor="let category of categories"
-      [ngClass]="getCategoryClass(category)"></span>
+    <span (click)="changeCategory(category)" *ngFor="let category of categories" [ngClass]="getCategoryClass(category)"
+      [routerLink]="'/products'">{{ category.charAt(0).toUpperCase() + category.slice(1)}}</span>
   </div>
 </div>

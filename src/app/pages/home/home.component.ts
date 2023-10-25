@@ -29,4 +29,9 @@ export class HomeComponent implements OnInit {
   getCategory(category: string) {
     this.service.getCategoryProducts(category);
   }
+
+  changeCategory(category: string) {
+    this.state.setCurrentCategory(category);
+    this.service.getCategoryProducts(category);
+  }
 }

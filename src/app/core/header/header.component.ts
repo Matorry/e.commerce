@@ -13,9 +13,14 @@ export class HeaderComponent {
   menuOptionsLoged: MenuOption[];
   isUserLoggedIn: boolean;
   categories: string[] = [];
+  selectedCategory = '';
   constructor(private state: StateService, private service: ProductService) {
     this.isUserLoggedIn = false;
     this.state.getCategories().subscribe((resp) => (this.categories = resp));
+
+    this.state.getCurrentCategory().subscribe((category) => {
+      this.selectedCategory = category;
+    });
 
     this.menuOptions = [
       { path: 'home', label: 'home' },
@@ -40,5 +45,15 @@ export class HeaderComponent {
 
   getCategory(category: string) {
     this.service.getCategoryProducts(category);
+  }
+
+  changeCategory(category: string) {
+    this.state.setCurrentCategory(category);
+    this.selectedCategory = category;
+    this.service.getCategoryProducts(category);
+  }
+
+  getTabIndex(): number {
+    return this.categories.indexOf(this.selectedCategory);
   }
 }

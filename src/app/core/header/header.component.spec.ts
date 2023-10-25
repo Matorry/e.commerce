@@ -53,5 +53,15 @@ describe('Given the component HeaderComponent', () => {
 
       expect(service.getCategoryProducts).toHaveBeenCalledWith('');
     });
+
+    it('Then i call changeCategory', () => {
+      spyOn(service, 'getCategoryProducts');
+      spyOn(stateService, 'setCurrentCategory');
+
+      component.changeCategory('');
+
+      expect(service.getCategoryProducts).toHaveBeenCalledWith('');
+      expect(stateService.setCurrentCategory).toHaveBeenCalledWith('');
+    });
   });
 });

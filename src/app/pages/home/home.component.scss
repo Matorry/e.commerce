@@ -74,16 +74,36 @@ div {
       transition: all 0.5s ease-in-out;
     }
     .electronics {
-      background-image: url(../../../assets/electronics.webp);
+      background-image: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.667)
+        ),
+        url(../../../assets/electronics.webp);
     }
     .jewelery {
-      background-image: url(../../../assets/jewelery.webp);
+      background-image: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.667)
+        ),
+        url(../../../assets/jewelery.webp);
     }
     .men {
-      background-image: url(../../../assets/men.webp);
+      background-image: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.667)
+        ),
+        url(../../../assets/men.webp);
     }
     .women {
-      background-image: url(../../../assets/women.webp);
+      background-image: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.667)
+        ),
+        url(../../../assets/women.webp);
     }
   }
 }
