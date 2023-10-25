@@ -41,7 +41,5 @@ export class LoginComponent {
         this.errorMessage = error.message;
       },
     });
-
-    this.loginForm.reset();
   }
 }

@@ -37,3 +37,16 @@ header {
   text-decoration: none;
   color: black;
 }
+
+@media (min-width: 767px) {
+  header {
+    div {
+      h1 {
+        font-size: 3rem;
+      }
+    }
+  }
+  .a {
+    font-size: 1.2rem;
+  }
+}

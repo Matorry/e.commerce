@@ -5,8 +5,11 @@ ul {
   flex-wrap: wrap;
   gap: 1rem;
   list-style: none;
+  max-width: 1024px;
   mat-card {
     width: 40vw;
+    max-width: 40%;
+    max-height: 45%;
     height: 45vh;
     text-align: center;
     justify-content: space-between;
@@ -35,6 +38,20 @@ ul {
         width: 50%;
         max-height: 50%;
         object-fit: contain;
+      }
+    }
+  }
+}
+
+@media (min-width: 767px) {
+  ul {
+    font-size: 1.2rem;
+    mat-card {
+      .product-rating {
+        font-size: 1.2rem;
+        .votes {
+          font-size: 1.2rem;
+        }
       }
     }
   }

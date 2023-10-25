@@ -11,3 +11,19 @@ nav {
     }
   }
 }
+@media (min-width: 767px) {
+  ul {
+    display: flex;
+    gap: 1rem;
+    li {
+      list-style: none;
+      a {
+        mat-icon {
+          font-size: 2rem;
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+  }
+}
