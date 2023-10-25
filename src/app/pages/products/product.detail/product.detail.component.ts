@@ -38,13 +38,14 @@ export class ProductDetailComponent implements OnInit {
     return '⭐'.repeat(fullStars) + halfStar + '☆'.repeat(emptyStars);
   }
 
-  handleAddToCart(product: Product) {
-    this.service.addToCart(product);
-  }
-
   openSnackBar() {
     this._snackBar.openFromComponent(SnackBarComponent, {
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+  handleAddToCart(product: Product) {
+    this.service.addToCart(product);
+    this.openSnackBar();
   }
 }
