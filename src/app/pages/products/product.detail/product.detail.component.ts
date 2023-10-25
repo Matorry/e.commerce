@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/model/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { StateService } from 'src/app/services/state.service';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 @Component({
   selector: 'e-commerce-product-detail',
@@ -12,11 +14,13 @@ import { StateService } from 'src/app/services/state.service';
 export class ProductDetailComponent implements OnInit {
   id: string | null = null;
   product: Product | undefined;
+  durationInSeconds = 1;
 
   constructor(
     private state: StateService,
     private route: ActivatedRoute,
-    private service: ProductService
+    private service: ProductService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -34,7 +38,14 @@ export class ProductDetailComponent implements OnInit {
     return '⭐'.repeat(fullStars) + halfStar + '☆'.repeat(emptyStars);
   }
 
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
+
   handleAddToCart(product: Product) {
     this.service.addToCart(product);
+    this.openSnackBar();
   }
 }
