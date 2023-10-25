@@ -7,10 +7,17 @@
   padding: 2rem;
 
   mat-card {
+    max-width: 50vh;
     padding: 2rem;
     gap: 1rem;
     text-align: center;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    img {
+      max-width: 40vh;
+    }
     mat-card-header {
       display: flex;
       align-items: center;

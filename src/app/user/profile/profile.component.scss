@@ -1,4 +1,5 @@
 mat-card {
+  max-width: 600px;
   span {
     width: 100%;
     display: flex;
@@ -27,6 +28,7 @@ mat-card {
       flex-wrap: wrap;
       mat-icon {
         margin-left: 1rem;
+        margin-right: 1rem;
         margin-bottom: 1rem;
       }
     }
