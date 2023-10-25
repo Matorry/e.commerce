@@ -7,24 +7,23 @@ import { SnackBarComponent } from './snack-bar.component';
 
 class MockSnackBarRef {}
 
-describe('SnackBarComponent', () => {
+describe('Given the class SnackBarComponent', () => {
   let component: SnackBarComponent;
   let fixture: ComponentFixture<SnackBarComponent>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [SnackBarComponent],
-      imports: [MatSelectModule, BrowserAnimationsModule, MatSnackBarModule],
-      providers: [
-        { provide: MatSnackBarRef, useClass: MockSnackBarRef }, // Use the mock implementation
-      ],
+  describe('When i instance it', () => {
+    beforeEach(() => {
+      TestBed.configureTestingModule({
+        declarations: [SnackBarComponent],
+        imports: [MatSelectModule, BrowserAnimationsModule, MatSnackBarModule],
+        providers: [{ provide: MatSnackBarRef, useClass: MockSnackBarRef }],
+      });
+      fixture = TestBed.createComponent(SnackBarComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
     });
-    fixture = TestBed.createComponent(SnackBarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    it('Then the component should be created', () => {
+      expect(component).toBeTruthy();
+    });
   });
 });

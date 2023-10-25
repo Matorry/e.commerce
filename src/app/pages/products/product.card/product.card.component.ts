@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from 'src/app/model/product.model';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 @Component({
   selector: 'e-commerce-product-card',
@@ -7,9 +9,10 @@ import { Product } from 'src/app/model/product.model';
   styleUrls: ['./product.card.component.scss'],
 })
 export class ProductCardComponent {
+  durationInSeconds = 1;
   @Input() products!: Product[];
   @Output() product: EventEmitter<Product>;
-  constructor() {
+  constructor(private _snackBar: MatSnackBar) {
     this.product = new EventEmitter();
   }
   getStarRating(rating: number): string {
@@ -21,5 +24,11 @@ export class ProductCardComponent {
   }
   addToCart(product: Product) {
     this.product.next(product);
+    this.openSnackBar();
+  }
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
   }
 }
