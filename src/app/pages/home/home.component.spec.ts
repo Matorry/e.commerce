@@ -45,5 +45,13 @@ describe('Given the class HomeComponent', () => {
       expect(stateService.setCurrentCategory).toHaveBeenCalled();
       expect(stateService.setProducts).toHaveBeenCalled();
     });
+
+    it('Then i call changeCategory', () => {
+      spyOn(stateService, 'setCurrentCategory');
+
+      component.changeCategory('');
+
+      expect(stateService.setCurrentCategory).toHaveBeenCalledWith('');
+    });
   });
 });

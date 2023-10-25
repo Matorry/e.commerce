@@ -1,14 +1,16 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <header>
   <div>
-    <h1>E-Commerce</h1>
+    <h1>Market home</h1>
     <e-commerce-menu [menuOptions]="menuOptions" *ngIf="!isUserLoggedIn"></e-commerce-menu>
     <e-commerce-menu [menuOptions]="menuOptionsLoged" *ngIf="isUserLoggedIn"></e-commerce-menu>
   </div>
-  <mat-tab-group [disablePagination]="true">
+  <mat-tab-group [disablePagination]="true" [selectedIndex]="getTabIndex()">
     <mat-tab *ngFor="let category of categories">
       <ng-template mat-tab-label>
-        <a class="a" (click)="getCategory(category)" [routerLink]="'/products'">
-          {{category.charAt(0).toUpperCase() + category.replace(' clothing', '').slice(1)}}
+        <a [routerLink]="'/products'" class="a" (click)="changeCategory(category)">
+          {{ category.charAt(0).toUpperCase() + category.replace(' clothing', '').slice(1)}}
         </a>
       </ng-template>
     </mat-tab>
