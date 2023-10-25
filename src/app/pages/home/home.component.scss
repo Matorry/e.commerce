@@ -19,12 +19,16 @@ div {
     gap: 0.5rem;
     margin-inline: 2.5vw;
     li {
+      height: 121px;
+      width: 121px;
       border-radius: 20px;
       position: relative;
       scroll-snap-align: center;
       background-color: white;
       list-style: none;
       a {
+        height: 121px;
+        width: 121px;
         display: flex;
         flex-direction: column;
         justify-content: center;
