@@ -11,11 +11,18 @@
       </div>
       <div class="price-container">
         <span>{{ product.price }}€</span>
-        <button mat-icon-button (click)="handleAddToCart(product)">
-          <mat-icon>add_shopping_cart</mat-icon>
-        </button>
       </div>
     </mat-card-content>
+    <mat-card-actions class="product-actions">
+      <div class="counter">
+        <mat-icon (click)="handleMore(product)">add_circle_outline</mat-icon>
+        <span>{{product.quantity}}</span>
+        <mat-icon (click)="handleLess(product)">remove_circle_outline</mat-icon>
+      </div>
+      <button mat-icon-button (click)="handleAddToCart(product)">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    </mat-card-actions>
   </mat-card>
   <button mat-raised-button color="basic" [routerLink]="['/products']">Back</button>
 </div>

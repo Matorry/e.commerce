@@ -61,9 +61,20 @@ export class ProductService {
   getTotalPrice(products: Product[]): number {
     const total = Number(
       products
-        .reduce((accumulator, product) => accumulator + product.price, 0)
+        .reduce(
+          (accumulator, product) =>
+            accumulator + this.totalProductPrice(product),
+          0
+        )
         .toFixed(2)
     );
+
+    return (total * 100) / 100;
+  }
+
+  totalProductPrice(product: Product) {
+    let total = 1;
+    if (product.quantity) total = Number(product.price) * product.quantity;
     return (total * 100) / 100;
   }
 

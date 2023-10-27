@@ -2,7 +2,7 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <header>
   <div>
-    <h1>Market home</h1>
+    <h1 [routerLink]="'/home'">Market home</h1>
     <e-commerce-menu [menuOptions]="menuOptions" *ngIf="!isUserLoggedIn"></e-commerce-menu>
     <e-commerce-menu [menuOptions]="menuOptionsLoged" *ngIf="isUserLoggedIn"></e-commerce-menu>
   </div>

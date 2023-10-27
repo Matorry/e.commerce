@@ -48,6 +48,10 @@ export class PaymentPageComponent {
     return this.service.getTotalPrice(products);
   }
 
+  getProductPrice(product: Product) {
+    return this.service.totalProductPrice(product);
+  }
+
   onSubmit() {
     if (this.paymentForm.valid) {
       const today = new Date();

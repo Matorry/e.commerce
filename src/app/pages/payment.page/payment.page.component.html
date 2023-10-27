@@ -4,7 +4,7 @@
       <a [routerLink]="['/product', product.id]">
         <img src="{{product.image}}" alt="{{product.title}}">
         <span class="title">{{product.title}}</span>
-        <span>{{product.price}}€</span>
+        <span>X {{product.quantity!}} = {{getProductPrice(product)}}€</span>
       </a>
     </li>
   </ul>

@@ -22,4 +22,10 @@ export class ProductCardComponent {
   addToCart(product: Product) {
     this.product.next(product);
   }
+  handleMore(product: Product) {
+    if (product.quantity) product.quantity++;
+  }
+  handleLess(product: Product) {
+    if (product.quantity && product.quantity > 1) product.quantity--;
+  }
 }
