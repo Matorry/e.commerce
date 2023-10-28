@@ -44,10 +44,18 @@ describe('Given the class CartComponent', () => {
 
     it('Then should calculate total price correctly', () => {
       const total = component.getTotalPrice([
-        { price: 3 } as unknown as Product,
-        { price: 2 } as unknown as Product,
+        { price: 3, quantity: 1 } as unknown as Product,
+        { price: 2, quantity: 1 } as unknown as Product,
       ]);
       expect(total).toEqual(5);
+    });
+
+    it('Then should calculate product price correctly', () => {
+      const total = component.getProductPrice({
+        price: 3,
+        quantity: 1,
+      } as unknown as Product);
+      expect(total).toEqual(3);
     });
 
     it('Then should remove a product from the cart', () => {

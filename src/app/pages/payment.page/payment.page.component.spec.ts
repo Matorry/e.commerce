@@ -57,6 +57,14 @@ describe('PaymentPageComponent', () => {
     expect(totalPrice).toBe(60);
   });
 
+  it('Then should calculate product price correctly', () => {
+    const total = component.getProductPrice({
+      price: 3,
+      quantity: 1,
+    } as unknown as Product);
+    expect(total).toEqual(3);
+  });
+
   it('should submit the form and update user purchase history', fakeAsync(() => {
     const user: User = {
       id: '1',

@@ -77,9 +77,12 @@ export class ProfileComponent {
   }
 
   deleteAccount() {
+    this.statePatch = 'loading';
     this.repo.delete(this.user.user.id).subscribe({
-      next: () => (this.errorMessage = null),
-      error: (error) => (this.errorMessage = error.message),
+      next: () => ((this.errorMessage = null), (this.statePatch = 'loaded')),
+      error: (error) => (
+        (this.errorMessage = error.message), (this.statePatch = 'loaded')
+      ),
     });
     this.state.logOut();
     this.router.navigate(['home']);
