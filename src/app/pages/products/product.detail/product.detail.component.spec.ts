@@ -88,20 +88,20 @@ describe('Given the class ProductDetailComponent', () => {
       expect(stateService.setCart).toHaveBeenCalledWith([mockProduct]);
     });
     it('Then should call handleMore method', () => {
-      const mockProduct = {
-        id: 1,
+      const mockDetailProduct = {
+        id: 3,
         quantity: 2,
       } as unknown as Product;
-      component.handleMore(mockProduct);
-      expect(mockProduct.quantity).toEqual(3);
+      component.handleMore(mockDetailProduct);
+      expect(mockDetailProduct.quantity).toEqual(3);
     });
     it('Then should call handleLess method', () => {
-      const mockProduct = {
-        id: 1,
+      const mockDetailProduct = {
+        id: 3,
         quantity: 2,
       } as unknown as Product;
-      component.handleLess(mockProduct);
-      expect(mockProduct.quantity).toEqual(1);
+      component.handleLess(mockDetailProduct);
+      expect(mockDetailProduct.quantity).toEqual(1);
     });
   });
 });
