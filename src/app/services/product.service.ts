@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product.model';
 import { RepoCommerceService } from './repo.commerce.service';
@@ -11,6 +12,7 @@ export class ProductService {
   getProductList() {
     this.repo.getAll().subscribe({
       next: (response) => {
+        response.forEach((product) => (product.quantity = 1));
         this.state.setProducts(response);
       },
       error: (response) => {
@@ -32,6 +34,7 @@ export class ProductService {
   getCategoryProducts(category: string) {
     this.repo.getCategoryProducts(category).subscribe({
       next: (response) => {
+        response.forEach((product) => (product.quantity = 1));
         this.state.setProducts(response);
         this.state.setCurrentCategory(category);
       },
@@ -44,7 +47,16 @@ export class ProductService {
   addToCart(product: Product) {
     let currentCart = [] as Product[];
     this.state.getCart().subscribe((data) => (currentCart = data));
-    currentCart.push(product);
+    const productIndex = currentCart.findIndex(
+      (element) => element.id === product.id
+    );
+    if (productIndex !== -1) {
+      currentCart[productIndex].quantity =
+        product.quantity! + currentCart[productIndex].quantity!;
+    } else {
+      currentCart.push(product);
+    }
+
     this.state.setCart(currentCart);
   }
 

@@ -13,6 +13,7 @@ import { StateService } from 'src/app/services/state.service';
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
+  stateLogin: 'loading' | 'loaded' = 'loaded';
 
   constructor(
     private fb: FormBuilder,
@@ -27,17 +28,20 @@ export class LoginComponent {
   }
 
   handleSubmit() {
+    this.stateLogin = 'loading';
     this.errorMessage = null;
     const data: LoginData = {
       ...this.loginForm.value,
     };
     this.repo.login(data).subscribe({
       next: (response) => {
+        this.stateLogin = 'loaded';
         this.state.setUser(response);
         this.errorMessage = null;
         this.router.navigate(['products']);
       },
       error: (error) => {
+        this.stateLogin = 'loaded';
         this.errorMessage = error.message;
       },
     });

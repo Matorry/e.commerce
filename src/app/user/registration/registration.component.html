@@ -1,4 +1,5 @@
-<form [formGroup]="registerForm" aria-label="userRegister" (submit)="handleRegister()">
+<form *ngIf="stateRegister === 'loaded'" [formGroup]="registerForm" aria-label="userRegister"
+  (submit)="handleRegister()">
   <h2 for="userRegister">Register</h2>
 
   <mat-form-field appearance="fill">
@@ -70,3 +71,4 @@
   <button type="submit" [disabled]="registerForm.invalid">Submit</button>
   <span *ngIf="errorMessage">{{ errorMessage }}</span>
 </form>
+<mat-spinner *ngIf="stateRegister === 'loading'"></mat-spinner>

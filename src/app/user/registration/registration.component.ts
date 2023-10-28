@@ -13,6 +13,7 @@ export class RegistrationComponent {
   @Output()
   registerForm: FormGroup;
   errorMessage: string | null;
+  stateRegister: 'loading' | 'loaded' = 'loaded';
 
   constructor(
     private fb: FormBuilder,
@@ -33,6 +34,7 @@ export class RegistrationComponent {
   }
 
   handleRegister() {
+    this.stateRegister = 'loading';
     this.errorMessage = null;
     const data: UserNoId = {
       ...this.registerForm.value,
@@ -41,6 +43,7 @@ export class RegistrationComponent {
 
     this.repo.register(data).subscribe({
       next: () => {
+        this.stateRegister = 'loaded';
         this.errorMessage = null;
         this.router.navigate(['/login']);
       },

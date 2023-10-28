@@ -14,6 +14,7 @@ export class ProfileComponent {
   user: LogedUser = {} as LogedUser;
   profileForm: FormGroup;
   errorMessage: string | null = null;
+  statePatch: 'loading' | 'loaded' = 'loaded';
 
   constructor(
     private state: StateService,
@@ -63,12 +64,15 @@ export class ProfileComponent {
   }
 
   saveChanges() {
+    this.statePatch = 'loading';
     const data: Partial<User> = {
       ...this.profileForm.value,
     };
     this.repo.patch(data, this.user.user.id).subscribe({
-      next: () => (this.errorMessage = null),
-      error: (error) => (this.errorMessage = error.message),
+      next: () => ((this.errorMessage = null), (this.statePatch = 'loaded')),
+      error: (error) => (
+        (this.errorMessage = error.message), (this.statePatch = 'loaded')
+      ),
     });
   }
 

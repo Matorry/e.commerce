@@ -1,6 +1,6 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
-<mat-card>
+<mat-card *ngIf="statePatch === 'loaded'">
   <span (click)="logOut()"><mat-icon>no_meeting_room</mat-icon></span>
   <mat-card-header>
     <mat-card-title>Your Profile</mat-card-title>
@@ -59,3 +59,4 @@
     </div>
   </mat-card-content>
 </mat-card>
+<mat-spinner *ngIf="statePatch === 'loading'"></mat-spinner>

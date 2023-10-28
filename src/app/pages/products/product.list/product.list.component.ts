@@ -21,14 +21,7 @@ export class ProductListComponent {
     private service: ProductService,
     private _snackBar: MatSnackBar
   ) {
-    this.state
-      .getProducts()
-      .subscribe(
-        (resp) => (
-          resp.forEach((element) => (element.quantity = 1)),
-          (this.products = resp)
-        )
-      );
+    this.state.getProducts().subscribe((resp) => (this.products = resp));
     this.state.getCurrentCategory().subscribe((resp) => (this.category = resp));
   }
 
