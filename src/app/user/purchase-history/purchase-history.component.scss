@@ -25,6 +25,7 @@ div {
       text-align: center;
       max-width: 533.4px;
       a {
+        font-size: 0.8rem;
         height: 70%;
         width: 100%;
         justify-content: space-between;
@@ -34,13 +35,14 @@ div {
         text-decoration: none;
         color: black;
         padding-inline: 1rem;
-        gap: 2rem;
+        gap: 1rem;
         text-align: center;
         img {
           height: 3vh;
         }
         .title {
           font-size: 0.6rem;
+          width: 40%;
         }
       }
     }
@@ -50,5 +52,12 @@ div {
     text-align: end;
     padding: 1rem;
     max-width: 533.4px;
+  }
+  .purchase-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
   }
 }

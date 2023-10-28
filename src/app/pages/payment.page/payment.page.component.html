@@ -1,10 +1,10 @@
-<div class="cart-container">
+<div class="cart-container" *ngIf="statePayment === 'loaded'">
   <ul *ngIf="products">
     <li *ngFor="let product of products">
       <a [routerLink]="['/product', product.id]">
         <img src="{{product.image}}" alt="{{product.title}}">
         <span class="title">{{product.title}}</span>
-        <span>{{product.price}}€</span>
+        <span>X {{product.quantity!}} = {{getProductPrice(product)}}€</span>
       </a>
     </li>
   </ul>
@@ -32,3 +32,4 @@
     <button mat-raised-button color="primary" type="submit" [disabled]="!paymentForm.valid">Pay</button>
   </form>
 </div>
+<mat-spinner *ngIf="statePayment === 'loading'"></mat-spinner>

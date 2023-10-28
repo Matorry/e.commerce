@@ -39,5 +39,22 @@ describe('Given the class ProductCardComponent', () => {
 
       expect(EventEmitter.prototype.next).toHaveBeenCalledWith(mockProduct);
     });
+
+    it('Then should call handleMore method', () => {
+      const mockCardProduct = {
+        id: 2,
+        quantity: 2,
+      } as unknown as Product;
+      component.handleMore(mockCardProduct);
+      expect(mockCardProduct.quantity).toEqual(3);
+    });
+    it('Then should call handleLess method', () => {
+      const mockCardProduct = {
+        id: 2,
+        quantity: 2,
+      } as unknown as Product;
+      component.handleLess(mockCardProduct);
+      expect(mockCardProduct.quantity).toEqual(1);
+    });
   });
 });

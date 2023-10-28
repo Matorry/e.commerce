@@ -36,4 +36,8 @@ export class CartComponent {
   getTotalPrice(products: Product[]) {
     return this.service.getTotalPrice(products);
   }
+
+  getProductPrice(product: Product) {
+    return this.service.totalProductPrice(product);
+  }
 }

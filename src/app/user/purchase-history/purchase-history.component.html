@@ -3,6 +3,8 @@
 
 <div *ngFor="let purchase of purchaseHistory" class="purchase">
   <div class="purchase-header" (click)="togglePurchase(purchase)">
+    <mat-icon *ngIf="!purchase.isOpen">keyboard_arrow_right</mat-icon>
+    <mat-icon *ngIf="purchase.isOpen">keyboard_arrow_down</mat-icon>
     {{ purchase.date }}
   </div>
   <ul *ngIf="purchase.isOpen" class="products">
@@ -10,7 +12,7 @@
       <a [routerLink]="['/product', product.id]">
         <img src="{{product.image}}" alt="{{product.title}}">
         <span class="title">{{product.title}}</span>
-        <span>{{product.price}}€</span>
+        <span>X {{product.quantity!}} = {{getProductPrice(product)}}€</span>
       </a>
     </li>
     <span class="price">Total : {{purchase.amount}}€</span>

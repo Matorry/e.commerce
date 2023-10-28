@@ -1,5 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatIconModule } from '@angular/material/icon';
+import { Product } from 'src/app/model/product.model';
 import { Purchase } from 'src/app/model/user.model';
 import { PurchaseHistoryComponent } from './purchase-history.component';
 
@@ -11,7 +13,7 @@ describe('Given the class PurchaseHistoryComponent', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [PurchaseHistoryComponent],
-        imports: [HttpClientTestingModule],
+        imports: [HttpClientTestingModule, MatIconModule],
       });
       fixture = TestBed.createComponent(PurchaseHistoryComponent);
       component = fixture.componentInstance;
@@ -38,6 +40,14 @@ describe('Given the class PurchaseHistoryComponent', () => {
       component.purchaseHistory.forEach((element) => {
         expect(element.isOpen).toBe(false);
       });
+    });
+
+    it('Then should calculate product price correctly', () => {
+      const total = component.getProductPrice({
+        price: 3,
+        quantity: 1,
+      } as unknown as Product);
+      expect(total).toEqual(3);
     });
 
     it('Then, should toggle isOpen property of a purchase', () => {

@@ -71,7 +71,7 @@ describe('Given the class ProductService', () => {
 
       expect(repo.getCategoryProducts).toHaveBeenCalledWith('');
       expect(stateService.setProducts).toHaveBeenCalledWith([
-        {} as unknown as Product,
+        { quantity: 1 } as unknown as Product,
       ]);
       expect(stateService.setCurrentCategory).toHaveBeenCalledWith('');
     });
@@ -96,7 +96,7 @@ describe('Given the class ProductService', () => {
 
       expect(repo.getAll).toHaveBeenCalledWith();
       expect(stateService.setProducts).toHaveBeenCalledWith([
-        { id: 1 } as Product,
+        { id: 1, quantity: 1 } as Product,
       ]);
     });
 
@@ -110,10 +110,21 @@ describe('Given the class ProductService', () => {
       expect(stateService.setProducts).not.toHaveBeenCalled();
     });
 
-    it('Then should add a product to the cart', () => {
+    it('Then should add a new product to the cart', () => {
       const product = { id: '2' } as unknown as Product;
       service.addToCart(product);
       stateService.getCart().subscribe((res) => expect(res).toEqual([product]));
+    });
+
+    it('Then should add a new product to the cart', () => {
+      const product = { id: 2, quantity: 1 } as unknown as Product;
+      stateService.setCart([{ id: 2, quantity: 1 } as unknown as Product]);
+      service.addToCart(product);
+      stateService
+        .getCart()
+        .subscribe((res) =>
+          expect(res).toEqual([{ id: 2, quantity: 2 } as unknown as Product])
+        );
     });
 
     it('Then should remove a product from the cart', () => {

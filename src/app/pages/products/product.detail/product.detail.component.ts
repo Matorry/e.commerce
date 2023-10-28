@@ -48,4 +48,11 @@ export class ProductDetailComponent implements OnInit {
     this.service.addToCart(product);
     this.openSnackBar();
   }
+
+  handleMore(product: Product) {
+    if (product.quantity) product.quantity++;
+  }
+  handleLess(product: Product) {
+    if (product.quantity && product.quantity > 1) product.quantity--;
+  }
 }

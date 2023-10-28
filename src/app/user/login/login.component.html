@@ -1,4 +1,4 @@
-<div class="login-container">
+<div class="login-container" *ngIf="stateLogin === 'loaded'">
   <h2>Login</h2>
   <p>Sign in to your account</p>
   <form aria-label="userLogin" [formGroup]="loginForm" (submit)="handleSubmit()">
@@ -21,3 +21,4 @@
   <a [routerLink]="'/user/registration'" role="button" class="register">Register new account</a>
   <span *ngIf="errorMessage">{{ errorMessage }}</span>
 </div>
+<mat-spinner *ngIf="stateLogin === 'loading'"></mat-spinner>

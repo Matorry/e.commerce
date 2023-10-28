@@ -40,6 +40,20 @@ ul {
         object-fit: contain;
       }
     }
+    .product-actions {
+      width: 100%;
+      margin-inline-start: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      .counter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 }
 

@@ -14,6 +14,11 @@
       </div>
     </mat-card-content>
     <mat-card-actions class="product-actions">
+      <div class="counter">
+        <mat-icon (click)="handleMore(item)">add_circle_outline</mat-icon>
+        <span>{{item.quantity}}</span>
+        <mat-icon (click)="handleLess(item)">remove_circle_outline</mat-icon>
+      </div>
       <button mat-icon-button (click)="addToCart(item)">
         <mat-icon>add_shopping_cart</mat-icon>
       </button>

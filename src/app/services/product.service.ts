@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product.model';
 import { RepoCommerceService } from './repo.commerce.service';
@@ -11,6 +12,7 @@ export class ProductService {
   getProductList() {
     this.repo.getAll().subscribe({
       next: (response) => {
+        response.forEach((product) => (product.quantity = 1));
         this.state.setProducts(response);
       },
       error: (response) => {
@@ -32,6 +34,7 @@ export class ProductService {
   getCategoryProducts(category: string) {
     this.repo.getCategoryProducts(category).subscribe({
       next: (response) => {
+        response.forEach((product) => (product.quantity = 1));
         this.state.setProducts(response);
         this.state.setCurrentCategory(category);
       },
@@ -44,7 +47,16 @@ export class ProductService {
   addToCart(product: Product) {
     let currentCart = [] as Product[];
     this.state.getCart().subscribe((data) => (currentCart = data));
-    currentCart.push(product);
+    const productIndex = currentCart.findIndex(
+      (element) => element.id === product.id
+    );
+    if (productIndex !== -1) {
+      currentCart[productIndex].quantity =
+        product.quantity! + currentCart[productIndex].quantity!;
+    } else {
+      currentCart.push(product);
+    }
+
     this.state.setCart(currentCart);
   }
 
@@ -61,9 +73,20 @@ export class ProductService {
   getTotalPrice(products: Product[]): number {
     const total = Number(
       products
-        .reduce((accumulator, product) => accumulator + product.price, 0)
+        .reduce(
+          (accumulator, product) =>
+            accumulator + this.totalProductPrice(product),
+          0
+        )
         .toFixed(2)
     );
+
+    return (total * 100) / 100;
+  }
+
+  totalProductPrice(product: Product) {
+    let total = 1;
+    if (product.quantity) total = Number(product.price) * product.quantity;
     return (total * 100) / 100;
   }
 
