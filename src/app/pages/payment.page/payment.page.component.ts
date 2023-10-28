@@ -17,6 +17,7 @@ export class PaymentPageComponent {
   paymentForm: FormGroup;
   user: User = {} as User;
   errorMessage: string | null = null;
+  statePayment: 'loading' | 'loaded' = 'loaded';
 
   constructor(
     private fb: FormBuilder,
