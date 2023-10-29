@@ -1,4 +1,7 @@
 <div class="list-container">
   <h2>{{category.toUpperCase()}}</h2>
-  <e-commerce-product-card [products]="products" (product)="handleAddToCart($event)"></e-commerce-product-card>
+  <ul>
+    <e-commerce-product-card *ngFor="let product of products" [cardData]="product"
+      (product)="handleAddToCart($event)"></e-commerce-product-card>
+  </ul>
 </div>

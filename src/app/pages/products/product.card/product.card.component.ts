@@ -7,8 +7,9 @@ import { Product } from 'src/app/model/product.model';
   styleUrls: ['./product.card.component.scss'],
 })
 export class ProductCardComponent {
-  @Input() products!: Product[];
+  @Input() cardData!: Product;
   @Output() product: EventEmitter<Product>;
+  counter = 1;
   constructor() {
     this.product = new EventEmitter();
   }
@@ -20,12 +21,14 @@ export class ProductCardComponent {
     return '⭐'.repeat(fullStars) + halfStar + '☆'.repeat(emptyStars);
   }
   addToCart(product: Product) {
+    product.quantity = this.counter;
+    this.counter = 1;
     this.product.next(product);
   }
-  handleMore(product: Product) {
-    if (product.quantity) product.quantity++;
+  handleMore() {
+    this.counter++;
   }
-  handleLess(product: Product) {
-    if (product.quantity && product.quantity > 1) product.quantity--;
+  handleLess() {
+    if (this.counter > 1) this.counter--;
   }
 }

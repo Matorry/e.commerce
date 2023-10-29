@@ -15,6 +15,7 @@ export class ProductDetailComponent implements OnInit {
   id: string | null = null;
   product: Product | undefined;
   durationInSeconds = 1;
+  counter = 1;
 
   constructor(
     private state: StateService,
@@ -49,10 +50,10 @@ export class ProductDetailComponent implements OnInit {
     this.openSnackBar();
   }
 
-  handleMore(product: Product) {
-    if (product.quantity) product.quantity++;
+  handleMore() {
+    this.counter++;
   }
-  handleLess(product: Product) {
-    if (product.quantity && product.quantity > 1) product.quantity--;
+  handleLess() {
+    if (this.counter > 1) this.counter--;
   }
 }

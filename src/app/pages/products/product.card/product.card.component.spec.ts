@@ -1,5 +1,8 @@
 import { EventEmitter } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Product } from 'src/app/model/product.model';
 import { ProductCardComponent } from './product.card.component';
 
@@ -10,9 +13,22 @@ describe('Given the class ProductCardComponent', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [ProductCardComponent],
+        imports: [MatCardModule, MatIconModule, RouterTestingModule],
       });
       fixture = TestBed.createComponent(ProductCardComponent);
       component = fixture.componentInstance;
+      component.cardData = {
+        id: 2,
+        title: 'test',
+        price: 2,
+        description: 'test',
+        category: 'test',
+        image: 'test',
+        rating: {
+          rate: 2,
+          count: 2,
+        },
+      };
       fixture.detectChanges();
     });
 
@@ -41,20 +57,13 @@ describe('Given the class ProductCardComponent', () => {
     });
 
     it('Then should call handleMore method', () => {
-      const mockCardProduct = {
-        id: 2,
-        quantity: 2,
-      } as unknown as Product;
-      component.handleMore(mockCardProduct);
-      expect(mockCardProduct.quantity).toEqual(3);
+      component.handleMore();
+      expect(component.counter).toEqual(2);
     });
     it('Then should call handleLess method', () => {
-      const mockCardProduct = {
-        id: 2,
-        quantity: 2,
-      } as unknown as Product;
-      component.handleLess(mockCardProduct);
-      expect(mockCardProduct.quantity).toEqual(1);
+      component.counter = 2;
+      component.handleLess();
+      expect(component.counter).toEqual(1);
     });
   });
 });

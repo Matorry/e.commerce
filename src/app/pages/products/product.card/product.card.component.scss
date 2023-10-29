@@ -1,71 +1,58 @@
-ul {
-  justify-content: center;
+.product-card {
+  width: 40vw;
+  max-height: 45%;
+  height: 45vh;
+  text-align: center;
+  justify-content: space-between;
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  list-style: none;
-  max-width: 1024px;
-  mat-card {
-    width: 40vw;
-    max-width: 40%;
-    max-height: 45%;
-    height: 45vh;
-    text-align: center;
-    justify-content: space-between;
+  flex-direction: column;
+  padding: 0.5rem;
+  .product-rating {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    .votes {
+      font-size: 0.8rem;
+    }
+  }
+  a {
+    height: 60%;
+    justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
-    .product-rating {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    img {
+      width: 50%;
+      max-height: 50%;
+      object-fit: contain;
+    }
+  }
+  .product-actions {
+    width: 100%;
+    margin-inline-start: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    .counter {
       display: flex;
       flex-direction: column;
-      font-size: 0.8rem;
-      .votes {
-        font-size: 0.8rem;
-      }
-    }
-    a {
-      height: 60%;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: black;
-      text-align: center;
-      img {
-        width: 50%;
-        max-height: 50%;
-        object-fit: contain;
-      }
-    }
-    .product-actions {
-      width: 100%;
-      margin-inline-start: 1rem;
-      display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: row;
-      .counter {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
     }
   }
 }
 
 @media (min-width: 767px) {
-  ul {
-    font-size: 1.2rem;
-    mat-card {
-      .product-rating {
+  mat-card {
+    .product-rating {
+      font-size: 1.2rem;
+      .votes {
         font-size: 1.2rem;
-        .votes {
-          font-size: 1.2rem;
-        }
       }
     }
   }
