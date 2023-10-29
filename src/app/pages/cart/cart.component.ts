@@ -25,6 +25,10 @@ export class CartComponent {
   removeFromCart(product: Product) {
     this.service.removeFromCart(product);
   }
+
+  removeOneFromCart(product: Product) {
+    this.service.removeOneFromCart(product);
+  }
   getStarRating(rating: number): string {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5 ? '⭐' : '';

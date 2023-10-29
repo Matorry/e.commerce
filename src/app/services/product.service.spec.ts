@@ -134,6 +134,13 @@ describe('Given the class ProductService', () => {
       stateService.getCart().subscribe((res) => expect(res).toEqual([]));
     });
 
+    it('Then should remove one product from the cart', () => {
+      const product = { id: '2', quantity: 1 } as unknown as Product;
+      service.addToCart(product);
+      service.removeOneFromCart(product);
+      stateService.getCart().subscribe((res) => expect(res).toEqual([]));
+    });
+
     it('Then should clear the cart', () => {
       const product = { id: '2' } as unknown as Product;
       service.addToCart(product);

@@ -70,6 +70,17 @@ export class ProductService {
     }
   }
 
+  removeOneFromCart(product: Product) {
+    let currentCart = [] as Product[];
+    this.state.getCart().subscribe((data) => (currentCart = data));
+    const index = currentCart.findIndex((item) => item.id === product.id);
+    if (index !== -1) {
+      currentCart[index].quantity!--;
+      if (currentCart[index].quantity === 0) this.removeFromCart(product);
+    }
+    this.state.setCart(currentCart);
+  }
+
   getTotalPrice(products: Product[]): number {
     const total = Number(
       products

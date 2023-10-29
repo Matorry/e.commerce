@@ -8,4 +8,19 @@
   h2 {
     padding-bottom: 2rem;
   }
+  ul {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 1rem;
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 767px) {
+  ul {
+    font-size: 1.2rem;
+  }
 }

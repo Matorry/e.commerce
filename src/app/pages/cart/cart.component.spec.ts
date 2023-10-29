@@ -68,6 +68,16 @@ describe('Given the class CartComponent', () => {
       expect(stateService.setCart).toHaveBeenCalled();
     });
 
+    it('Then should remove one product from the cart', () => {
+      spyOn(stateService, 'getCart').and.returnValue(
+        of([{ id: 3, quantity: 3 } as unknown as Product])
+      );
+      spyOn(stateService, 'setCart');
+      component.removeOneFromCart({ id: 3 } as unknown as Product);
+      expect(stateService.getCart).toHaveBeenCalled();
+      expect(stateService.setCart).toHaveBeenCalled();
+    });
+
     it('Then should set isUserLoggedIn to true when a logged user is returned', () => {
       stateService.setUser({ token: 'test' } as unknown as LogedUser);
 

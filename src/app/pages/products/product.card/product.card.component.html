@@ -1,27 +1,25 @@
-<ul>
-  <mat-card *ngFor="let item of products" class="product-card">
-    <a [routerLink]="['/product', item.id]">
-      <img mat-card-image [src]="item.image" alt="{{ item.title }}" class="product-image">
-      <mat-card-title class="product-title">{{ item.title }}</mat-card-title>
-    </a>
-    <mat-card-content class="product-details">
-      <div class="product-rating">
-        <span>{{ getStarRating(item.rating.rate) }}</span>
-        <span class="votes">{{ item.rating.count }} votes</span>
-      </div>
-      <div class="product-price">
-        <span>{{ item.price }}€</span>
-      </div>
-    </mat-card-content>
-    <mat-card-actions class="product-actions">
-      <div class="counter">
-        <mat-icon (click)="handleMore(item)">add_circle_outline</mat-icon>
-        <span>{{item.quantity}}</span>
-        <mat-icon (click)="handleLess(item)">remove_circle_outline</mat-icon>
-      </div>
-      <button mat-icon-button (click)="addToCart(item)">
-        <mat-icon>add_shopping_cart</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</ul>
+<mat-card class="product-card">
+  <a [routerLink]="['/product', cardData.id]">
+    <img mat-card-image [src]="cardData.image" alt="{{ cardData.title }}" class="product-image">
+    <mat-card-title class="product-title">{{ cardData.title }}</mat-card-title>
+  </a>
+  <mat-card-content class="product-details">
+    <div class="product-rating">
+      <span>{{ getStarRating(cardData.rating.rate) }}</span>
+      <span class="votes">{{ cardData.rating.count }} votes</span>
+    </div>
+    <div class="product-price">
+      <span>{{ cardData.price }}€</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="product-actions">
+    <div class="counter">
+      <mat-icon (click)="handleMore()">add_circle_outline</mat-icon>
+      <span>{{counter}}</span>
+      <mat-icon (click)="handleLess()">remove_circle_outline</mat-icon>
+    </div>
+    <button mat-icon-button (click)="addToCart(cardData)">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
