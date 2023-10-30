@@ -2,6 +2,7 @@ import { Component, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserNoId } from 'src/app/model/user.model';
+import { ProductService } from 'src/app/services/product.service';
 import { RepoUserService } from 'src/app/services/repo.user.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class RegistrationComponent {
   constructor(
     private fb: FormBuilder,
     private repo: RepoUserService,
-    private router: Router
+    private router: Router,
+    private service: ProductService
   ) {
     this.errorMessage = null;
     this.registerForm = this.fb.group({
@@ -45,6 +47,7 @@ export class RegistrationComponent {
       next: () => {
         this.stateRegister = 'loaded';
         this.errorMessage = null;
+        this.service.openSnackBar('Registration completed successfully', 1);
         this.router.navigate(['/login']);
       },
       error: (error) => {

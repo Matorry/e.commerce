@@ -18,7 +18,7 @@ describe('Given the class ProductDetailComponent', () => {
   let fixture: ComponentFixture<ProductDetailComponent>;
   let stateService: StateService;
 
-  describe('When I instantiate it', () => {
+  describe('When the component is instantiated', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [ProductDetailComponent],

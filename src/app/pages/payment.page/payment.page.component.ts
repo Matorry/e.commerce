@@ -72,6 +72,7 @@ export class PaymentPageComponent {
         next: (resp) => (
           this.state.setUser(undefined, resp),
           (this.errorMessage = null),
+          this.service.openSnackBar('Payment completed', 1),
           this.router.navigate(['/user/profile'])
         ),
         error: (error) => (this.errorMessage = error.message),

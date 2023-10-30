@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { Product } from 'src/app/model/product.model';
 import { Purchase } from 'src/app/model/user.model';
 import { PurchaseHistoryComponent } from './purchase-history.component';
@@ -9,11 +10,11 @@ describe('Given the class PurchaseHistoryComponent', () => {
   let component: PurchaseHistoryComponent;
   let fixture: ComponentFixture<PurchaseHistoryComponent>;
 
-  describe('When I instantiate it', () => {
+  describe('When the component is instantiated', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [PurchaseHistoryComponent],
-        imports: [HttpClientTestingModule, MatIconModule],
+        imports: [HttpClientTestingModule, MatIconModule, MatSnackBarModule],
       });
       fixture = TestBed.createComponent(PurchaseHistoryComponent);
       component = fixture.componentInstance;

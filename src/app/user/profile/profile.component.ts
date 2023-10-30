@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LogedUser, User } from 'src/app/model/user.model';
+import { ProductService } from 'src/app/services/product.service';
 import { RepoUserService } from 'src/app/services/repo.user.service';
 import { StateService } from 'src/app/services/state.service';
 
@@ -20,7 +21,8 @@ export class ProfileComponent {
     private state: StateService,
     private formBuilder: FormBuilder,
     private repo: RepoUserService,
-    private router: Router
+    private router: Router,
+    private service: ProductService
   ) {
     this.state.getUser().subscribe((resp) => (this.user = resp));
 
@@ -69,7 +71,12 @@ export class ProfileComponent {
       ...this.profileForm.value,
     };
     this.repo.patch(data, this.user.user.id).subscribe({
-      next: () => ((this.errorMessage = null), (this.statePatch = 'loaded')),
+      next: () => (
+        this.profileForm.disable(),
+        (this.errorMessage = null),
+        (this.statePatch = 'loaded'),
+        this.service.openSnackBar('Changes made successfully', 1)
+      ),
       error: (error) => (
         (this.errorMessage = error.message), (this.statePatch = 'loaded')
       ),
@@ -79,7 +86,11 @@ export class ProfileComponent {
   deleteAccount() {
     this.statePatch = 'loading';
     this.repo.delete(this.user.user.id).subscribe({
-      next: () => ((this.errorMessage = null), (this.statePatch = 'loaded')),
+      next: () => (
+        (this.errorMessage = null),
+        (this.statePatch = 'loaded'),
+        this.service.openSnackBar('Account deleted successfully', 1)
+      ),
       error: (error) => (
         (this.errorMessage = error.message), (this.statePatch = 'loaded')
       ),
@@ -90,6 +101,7 @@ export class ProfileComponent {
 
   logOut() {
     this.state.logOut();
+    this.service.openSnackBar('Account closed successfully', 1);
     this.router.navigate(['home']);
   }
 }

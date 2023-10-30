@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
@@ -28,6 +29,7 @@ describe('Given the class RegistrationComponent', () => {
         imports: [
           HttpClientModule,
           CommonModule,
+          MatSnackBarModule,
           ReactiveFormsModule,
           RouterTestingModule.withRoutes([
             { path: 'login', component: LoginComponent },

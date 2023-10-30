@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/model/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { StateService } from 'src/app/services/state.service';
-import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 @Component({
   selector: 'e-commerce-product-detail',
@@ -14,14 +12,12 @@ import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 export class ProductDetailComponent implements OnInit {
   id: string | null = null;
   product: Product | undefined;
-  durationInSeconds = 1;
   counter = 1;
 
   constructor(
     private state: StateService,
     private route: ActivatedRoute,
-    private service: ProductService,
-    private _snackBar: MatSnackBar
+    private service: ProductService
   ) {}
 
   ngOnInit() {
@@ -40,12 +36,12 @@ export class ProductDetailComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.openFromComponent(SnackBarComponent, {
-      duration: this.durationInSeconds * 1000,
-    });
+    this.service.openSnackBar('Item added to your cart', 1);
   }
 
   handleAddToCart(product: Product) {
+    product.quantity = this.counter;
+    this.counter = 1;
     this.service.addToCart(product);
     this.openSnackBar();
   }

@@ -20,7 +20,7 @@ describe('Given the class ProductListComponent', () => {
   let productService: ProductService;
   let repo: RepoCommerceService;
 
-  describe('When I instantiate it', () => {
+  describe('When the component is instantiated', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [ProductListComponent, ProductCardComponent],

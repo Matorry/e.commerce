@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { of, throwError } from 'rxjs';
 import { Product } from '../model/product.model';
 import { ProductService } from './product.service';
@@ -14,6 +15,7 @@ describe('Given the class ProductService', () => {
   describe('When I access its methods', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
+        imports: [MatSnackBarModule],
         providers: [
           ProductService,
           {

@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -24,7 +25,7 @@ describe('Given the class ProfileComponent', () => {
   let repo: RepoUserService;
   let state: StateService;
   let router: Router;
-  describe('When i instance it', () => {
+  describe('When the component is instantiated', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [ProfileComponent, PurchaseHistoryComponent],
@@ -40,6 +41,7 @@ describe('Given the class ProfileComponent', () => {
           BrowserAnimationsModule,
           ReactiveFormsModule,
           MatCardModule,
+          MatSnackBarModule,
         ],
         providers: [
           {
