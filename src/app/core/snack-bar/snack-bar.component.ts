@@ -8,4 +8,7 @@ import { MatSnackBarRef } from '@angular/material/snack-bar';
 })
 export class SnackBarComponent {
   snackBarRef = inject(MatSnackBarRef);
+  constructor() {
+    this.snackBarRef.containerInstance.snackBarConfig.data;
+  }
 }

@@ -9,7 +9,7 @@ import { ProductCardComponent } from './product.card.component';
 describe('Given the class ProductCardComponent', () => {
   let component: ProductCardComponent;
   let fixture: ComponentFixture<ProductCardComponent>;
-  describe('When I instantiate it', () => {
+  describe('When the component is instantiated', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [ProductCardComponent],
@@ -50,6 +50,7 @@ describe('Given the class ProductCardComponent', () => {
         id: 1,
         name: 'Product 1',
         rating: { rate: 1 },
+        image: '',
       } as unknown as Product;
       component.addToCart(mockProduct);
 

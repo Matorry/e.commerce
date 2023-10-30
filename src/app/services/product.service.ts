@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../core/snack-bar/snack-bar.component';
 import { Product } from '../model/product.model';
 import { RepoCommerceService } from './repo.commerce.service';
 import { StateService } from './state.service';
@@ -8,7 +10,11 @@ import { StateService } from './state.service';
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private repo: RepoCommerceService, private state: StateService) {}
+  constructor(
+    private repo: RepoCommerceService,
+    private state: StateService,
+    private snackBar: MatSnackBar
+  ) {}
   getProductList() {
     this.repo.getAll().subscribe({
       next: (response) => {
@@ -103,5 +109,12 @@ export class ProductService {
 
   clearCart() {
     this.state.setCart([]);
+  }
+
+  openSnackBar(message: string, durationInSeconds: number) {
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      duration: durationInSeconds * 1000,
+      data: message,
+    });
   }
 }

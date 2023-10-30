@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { Product } from 'src/app/model/product.model';
@@ -15,11 +17,16 @@ describe('Given the class CartComponent', () => {
   let fixture: ComponentFixture<CartComponent>;
   let stateService: StateService;
   let repoCommerce: RepoCommerceService;
-  describe('When I instantiate it', () => {
+  describe('When the component is instantiated', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [CartComponent],
-        imports: [HttpClientTestingModule, RouterTestingModule],
+        imports: [
+          HttpClientTestingModule,
+          RouterTestingModule,
+          MatSnackBarModule,
+          BrowserAnimationsModule,
+        ],
         providers: [StateService, ProductService, RepoCommerceService],
       });
       fixture = TestBed.createComponent(CartComponent);

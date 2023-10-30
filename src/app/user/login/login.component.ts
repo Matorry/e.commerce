@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginData } from 'src/app/model/user.model';
+import { ProductService } from 'src/app/services/product.service';
 import { RepoUserService } from 'src/app/services/repo.user.service';
 import { StateService } from 'src/app/services/state.service';
 
@@ -19,7 +20,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private repo: RepoUserService,
     private router: Router,
-    private state: StateService
+    private state: StateService,
+    private service: ProductService
   ) {
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required]],
@@ -38,6 +40,7 @@ export class LoginComponent {
         this.stateLogin = 'loaded';
         this.state.setUser(response);
         this.errorMessage = null;
+        this.service.openSnackBar('User logged in correctly', 1);
         this.router.navigate(['products']);
       },
       error: (error) => {

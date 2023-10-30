@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 
 describe('Given the component AppComponent', () => {
-  describe('When I instantiate it', () => {
+  describe('When the component is instantiated', () => {
     beforeEach(() =>
       TestBed.configureTestingModule({
         imports: [RouterTestingModule, CoreModule, HttpClientTestingModule],

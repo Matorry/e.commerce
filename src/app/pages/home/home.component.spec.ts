@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { Product } from 'src/app/model/product.model';
@@ -14,11 +16,16 @@ describe('Given the class HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
   let stateService: StateService;
   let repo: RepoCommerceService;
-  describe('When I instantiate it', () => {
+  describe('When the component is instantiated', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [HomeComponent],
-        imports: [HttpClientTestingModule, RouterTestingModule],
+        imports: [
+          HttpClientTestingModule,
+          RouterTestingModule,
+          MatSnackBarModule,
+          BrowserAnimationsModule,
+        ],
         providers: [StateService, ProductService, RepoCommerceService],
       });
       fixture = TestBed.createComponent(HomeComponent);

@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { LogedUser } from 'src/app/model/user.model';
@@ -16,7 +17,7 @@ describe('Given the component HeaderComponent', () => {
   let stateService: StateService;
   let service: ProductService;
 
-  describe('When I instantiate it', () => {
+  describe('When the component is instantiated', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [HeaderComponent, MenuComponent],
@@ -25,6 +26,7 @@ describe('Given the component HeaderComponent', () => {
           HttpClientTestingModule,
           MatIconModule,
           MatTabsModule,
+          MatSnackBarModule,
         ],
         providers: [StateService],
       });

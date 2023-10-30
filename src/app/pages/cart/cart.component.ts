@@ -24,10 +24,12 @@ export class CartComponent {
 
   removeFromCart(product: Product) {
     this.service.removeFromCart(product);
+    this.service.openSnackBar('Products removed from cart', 1);
   }
 
   removeOneFromCart(product: Product) {
     this.service.removeOneFromCart(product);
+    this.service.openSnackBar('Product removed from cart', 1);
   }
   getStarRating(rating: number): string {
     const fullStars = Math.floor(rating);

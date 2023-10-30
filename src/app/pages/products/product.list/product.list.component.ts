@@ -3,7 +3,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from 'src/app/model/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { StateService } from 'src/app/services/state.service';
-import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 @Component({
   selector: 'e-commerce-product.list',
@@ -35,8 +34,6 @@ export class ProductListComponent {
   }
 
   openSnackBar() {
-    this._snackBar.openFromComponent(SnackBarComponent, {
-      duration: this.durationInSeconds * 1000,
-    });
+    this.service.openSnackBar('Item added to your cart', 1);
   }
 }
