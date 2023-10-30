@@ -32,7 +32,7 @@ describe('Given the class RegistrationComponent', () => {
           MatSnackBarModule,
           ReactiveFormsModule,
           RouterTestingModule.withRoutes([
-            { path: 'login', component: LoginComponent },
+            { path: 'user/login', component: LoginComponent },
           ]),
           MatButtonModule,
           MatFormFieldModule,

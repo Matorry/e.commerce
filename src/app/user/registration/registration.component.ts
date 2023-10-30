@@ -48,7 +48,7 @@ export class RegistrationComponent {
         this.stateRegister = 'loaded';
         this.errorMessage = null;
         this.service.openSnackBar('Registration completed successfully', 1);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/user/login']);
       },
       error: (error) => {
         this.errorMessage = error.message;
